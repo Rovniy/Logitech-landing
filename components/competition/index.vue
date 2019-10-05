@@ -1,16 +1,13 @@
 <template>
   <div class="competition-area">
     <h1>competition</h1>
+    <hr>
     <div v-if="isEmptyQuestions">
       <Question :question="currentQuestion" />
       <Answers :answers="currentAnswers" :set-answer="setAnswer" />
     </div>
     <div v-else>
-      <h2>Вопросы кончились</h2>
-      <h3>{{ successAnswers }}</h3>
-      <button @click="resetCompetition">
-        Заново блеать
-      </button>
+      <Result :success-answers="successAnswers" :find-results="findResults" :reset-competition="resetCompetition" />
     </div>
   </div>
 </template>
@@ -18,13 +15,16 @@
 <script>
 import Question from './question'
 import Answers from './answers'
-import Competition from '~/competition.json'
+import Result from './result'
+import Competition from '~/assets/data/competition.json'
+import Results from '~/assets/data/results.json'
 import get from 'lodash/get'
 
 export default {
   components: {
     Question,
-    Answers
+    Answers,
+    Result
   },
   data() {
     return {
@@ -41,19 +41,23 @@ export default {
     },
     isEmptyQuestions() {
       return (Competition.length > this.currentAnswer)
+    },
+    findResults() {
+      let result = 0
+      const keysArray = Object.keys(Results).map(item => parseInt(item))
+      
+      keysArray.forEach(item => {
+        if (this.successAnswers >= item) result = Results[item]
+      })
+      
+      return result
     }
   },
-  mounted() {
-    console.log('Competiton', Competition)
-  },
   methods: {
-    setAnswer(value) {
-      console.log('value', value)
+    setAnswer(item) {
+      if (item.is_correct) this.successAnswers += this.currentQuestion.value
+  
       this.currentAnswer++
-      
-      if (value) {
-        this.successAnswers++
-      }
     },
     resetCompetition() {
       this.currentAnswer = this.successAnswers = 0

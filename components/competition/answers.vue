@@ -1,7 +1,7 @@
 <template>
   <div class="answers-area">
     <h1>answers</h1>
-    <span v-for="item in answers" :key="item.text" class="answers-submit" @click="checkAnswer(item.is_correct)">{{ item.text }}</span>
+    <span v-for="item in answers" :key="item.text" class="answers-submit" @click="checkAnswer(item)">{{ item.text }}</span>
   </div>
 </template>
 
@@ -19,8 +19,8 @@ export default {
     }
   },
   methods: {
-    checkAnswer(is_correct) {
-      this.setAnswer(is_correct)
+    checkAnswer(item) {
+      this.setAnswer(item)
     }
   }
 }
