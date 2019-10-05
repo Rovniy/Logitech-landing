@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Question 1",
+    "description": "Quest description 1",
+    "image": "/images/competition/answer1.png",
+    "value": 1,
+    "answers": [
+      {
+        "text": "Some answer 1-1",
+        "is_correct": false
+      },
+      {
+        "text": "Some answer 1-2",
+        "is_correct": true
+      },
+      {
+        "text": "Some answer 1-3",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "title": "Question 2",
+    "description": "Quest description 2",
+    "image": "/images/competition/answer2.png",
+    "value": 1,
+    "answers": [
+      {
+        "text": "Some answer 2-1",
+        "is_correct": true
+      },
+      {
+        "text": "Some answer 2-2",
+        "is_correct": false
+      },
+      {
+        "text": "Some answer 2-3",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "title": "Question 3",
+    "description": "Quest description 3",
+    "image": "/images/competition/answer3.png",
+    "value": 1,
+    "answers": [
+      {
+        "text": "Some answer 3-1",
+        "is_correct": false
+      },
+      {
+        "text": "Some answer 3-2",
+        "is_correct": false
+      },
+      {
+        "text": "Some answer 3-3",
+        "is_correct": true
+      }
+    ]
+  }
+]
