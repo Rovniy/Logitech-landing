@@ -1,0 +1,29 @@
+$color-blue: #00B6ED
+$color-red: #ED1C24
+$color-white: #FFFFFF
+$color-light-bg: #F4F4F4
+$text-color: #000
+$font-main: 'BrownPro', 'Roboto', Arial, sans-serif
+
+// Responsive
+$mobile: 350px
+$tablet: 768px
+$desktop: 1200px
+$desktop-xl: 1920px
+
+/*************** RESPONSIVE **********************/
+@mixin mobile
+  @media screen and (min-width: #{$mobile})
+    @content
+
+@mixin tablet
+  @media screen and (min-width: #{$tablet})
+    @content
+
+@mixin desktop
+  @media screen and (min-width: #{$desktop})
+    @content
+
+@mixin desktopXL
+  @media screen and (min-width: #{$desktop-xl})
+    @content

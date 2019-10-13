@@ -25,7 +25,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.question-area {
-  height: 100px;
-}
+
 </style>
