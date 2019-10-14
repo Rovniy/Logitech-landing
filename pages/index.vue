@@ -1,9 +1,9 @@
 <template>
   <main class="container">
-    <SectionFirst />
-    <SectionComments />
+    <!--<SectionFirst />-->
+    <!--<SectionComments />-->
     <SectionThree />
-    <!--<SectionFour />-->
+    <SectionFour />
     <!--<SectionTest />-->
     <Footer />
   </main>
