@@ -2,9 +2,10 @@
   <main class="container">
     <!--<SectionFirst />-->
     <!--<SectionComments />-->
-    <SectionThree />
-    <SectionFour />
-    <!--<SectionTest />-->
+    <!--<SectionThree />-->
+    <!--<SectionFour />-->
+    <!--<SectionBuy />-->
+    <SectionTest />
     <Footer />
   </main>
 </template>
@@ -16,6 +17,7 @@ import SectionThree from '@/components/section-three'
 import SectionFour from '@/components/section-four'
 import SectionTest from '@/components/section-test'
 import Footer from '@/components/footer'
+import SectionBuy from '@/components/section-buy'
 
 export default {
   components: {
@@ -24,7 +26,8 @@ export default {
     SectionThree,
     SectionFour,
     SectionTest,
-    Footer
+    Footer,
+    SectionBuy
   }
 }
 </script>

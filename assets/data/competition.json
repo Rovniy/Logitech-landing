@@ -1,62 +1,449 @@
-[
-  {
-    "title": "Question 1",
-    "description": "Quest description 1",
-    "image": "answer1.png",
-    "value": 10,
-    "answers": [
-      {
-        "text": "Some answer 1-1",
-        "is_correct": false
-      },
-      {
-        "text": "Some answer 1-2",
-        "is_correct": true
-      },
-      {
-        "text": "Some answer 1-3",
-        "is_correct": false
-      }
-    ]
-  },
-  {
-    "title": "Question 2",
-    "description": "Quest description 2",
-    "image": "answer2.png",
-    "value": 10,
-    "answers": [
-      {
-        "text": "Some answer 2-1",
-        "is_correct": true
-      },
-      {
-        "text": "Some answer 2-2",
-        "is_correct": false
-      },
-      {
-        "text": "Some answer 2-3",
-        "is_correct": false
-      }
-    ]
-  },
-  {
-    "title": "Question 3",
-    "description": "Quest description 3",
-    "image": "answer3.png",
-    "value": 10,
-    "answers": [
-      {
-        "text": "Some answer 3-1",
-        "is_correct": false
-      },
-      {
-        "text": "Some answer 3-2",
-        "is_correct": false
-      },
-      {
-        "text": "Some answer 3-3",
-        "is_correct": true
-      }
-    ]
-  }
-]
+{
+  "easy": [
+    {
+      "title": "Жутковатые звуки, правда?",
+      "sound": "/sounds/easy_1.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "Еще бы! Это точно лизуны из Resident Evil",
+          "is_correct": true
+        },
+        {
+          "text": "В темноте Alan Wake еще и не такое услышишь"
+        },
+        {
+          "text": "Старый добрый Cold Fear. Кто-то помнит еще такую?"
+        },
+        {
+          "text": "Конечно The Last of Us, вон как щелкают"
+        }
+      ]
+    },
+    {
+      "title": "Говорят, фраза пошла в народ и стала мемом. А помните откуда она?",
+      "sound": "/sounds/easy_2.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "Точно тактика! Xcom, у них там и не такие штуки есть!"
+        },
+        {
+          "text": "Battlefield. Я знаю, я с4 бросал(а) на джипы"
+        },
+        {
+          "text": "Какой мем, вы о чем? Узнаю Full Spectrum Warrior"
+        },
+        {
+          "text": "Call of Duty Modern Warfare! Там такие постоянно летают, сам вызывал(а)",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "title": "Хорошо, когда тебя знают, любят, чествуют как героя, а каждый магазин просит тебя наговорить рекламу. Еще бы, ведь сам герой заходит купить сувенир для своей каюты.",
+      "sound": "/sounds/easy_3.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "Mass Effect. Реклама себя любимого из каждого угла доносится",
+          "is_correct": true
+        },
+        {
+          "text": "Шепард? Был похожий городок в Silent Hill Homecoming"
+        },
+        {
+          "text": "Bioshock же! Там полно киосков с плазмидами"
+        },
+        {
+          "text": "Ну это совсем легко. Crysis!"
+        }
+      ]
+    },
+    {
+      "title": "Этот саундтрек с теплотой вспоминают все владельцы playstation 1. Кстати, недавно вышел замечательный ремастер, опробовать который не составит труда на любой современной платформе.",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "Spyro. Там дракончик и кристаллы, точно оттуда"
+        },
+        {
+          "text": "Resident evil. Обычно играет, когда игроку необходимо расслабиться"
+        },
+        {
+          "text": "Ремастер? Shadow of the Colossus определенно!"
+        },
+        {
+          "text": "Конечно Crash Bandicoot",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "title": "Вам правда нужна подсказка? Ну ладно, держите: начало 00ых, расцвет компьютерных клубов, потные ладошки и бесконечное море впечатлений.",
+      "sound": "/sounds/easy_5.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "Operation Flashpoint. Звук автоматной очереди ни с чем не спутаешь"
+        },
+        {
+          "text": "Мы через кишку и на B! Counter Strike, тут без вопросов",
+          "is_correct": true
+        },
+        {
+          "text": "Ну вообще это определенно Half-Life. Только вот таких звуков я там не помню"
+        },
+        {
+          "text": "Ха! Я олд, это определенно Ricoсhet!"
+        }
+      ]
+    },
+    {
+      "title": "Миллионы игроков убивали вечера, пытаясь добраться до зла, угрожающего всему мирозданию. Правда, проводили они эти вечера в подземельях, пытаясь одеться получше, - негоже в обносках идти на великую битву.",
+      "sound": "/sounds/easy_6.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "Diablo 2. Мой лук готов к бою",
+          "is_correct": true
+        },
+        {
+          "text": "Слишком просто. Уверен(а), что это Hellgate London"
+        },
+        {
+          "text": "Сдается мне, Dungeon Siege подходит под описание. Подземелья, лут, все сходится"
+        },
+        {
+          "text": "Не знаю как вы там убивали свои вечера, я предпочитал(а) Warcraft"
+        }
+      ]
+    },
+    {
+      "title": "О как! Срочно вспоминаем игры, где была бензопила",
+      "sound": "/sounds/easy_7.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "Doom конечно! По стонам врагов сразу понятно"
+        },
+        {
+          "text": "Меня не проведешь, это Doom 2, там впервые появилась бензопила ",
+          "is_correct": true
+        },
+        {
+          "text": "Doom 2016. Сейчас зазвучит Мик Гордон и все будет как надо"
+        },
+        {
+          "text": "Ну вы издеваетесь. В Gears of War тоже была бензопила, голосую за шестеренки войны!"
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    }
+  ],
+  "medium": [
+
+  ],
+  "hard": [
+    {
+      "title": "",
+      "sound": "/sounds/easy_4.mp3",
+      "value": 10,
+      "answers": [
+        {
+          "text": "",
+          "is_correct": true
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        },
+        {
+          "text": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 <template>
   <div class="competition-area">
-    <h1>competition</h1>
-    <hr>
+    <span class="competition-area-title">Вопросы</span>
     <div v-if="isEmptyQuestions">
       <Question :question="currentQuestion" />
       <Answers :answers="currentAnswers" :set-answer="setAnswer" />
@@ -28,6 +27,7 @@ export default {
   },
   data() {
     return {
+      level: 0,
       currentAnswer: 0,
       successAnswers: 0
     }
@@ -66,6 +66,19 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="sass" scoped>
+.competition-area
+  position: relative
+  z-index: 3
+  background: #ffffff
+  border-radius: 8px
+  padding: 40px
+  width: 100%
+  max-width: 860px
+  color: #000
+  
+  &-title
+    font: bold 14px/14px $font-main
+    color: #C4C4C4
+    text-transform: uppercase
 </style>
