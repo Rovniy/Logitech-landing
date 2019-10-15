@@ -47,10 +47,11 @@ export default {
   &-right
     width: 100%
     display: flex
-    justify-content: flex-end
     align-items: center
     padding: 20px 0 0 0
+    justify-content: center
     @include tablet
+      justify-content: flex-end
       width: 50%
       padding: 0
   

@@ -1,66 +1,123 @@
 <template>
   <div class="competition-area">
-    <span class="competition-area-title">Вопросы</span>
-    <div v-if="isEmptyQuestions">
-      <Question :question="currentQuestion" />
-      <Answers :answers="currentAnswers" :set-answer="setAnswer" />
-    </div>
-    <div v-else>
-      <Result :success-answers="successAnswers" :find-results="findResults" :reset-competition="resetCompetition" />
-    </div>
+    <span v-if="step === 1 && ready" class="competition-area-title">Вопросы ({{ currentStep }}/{{ questionsCount }})</span>
+    <Difficult v-if="step === 0" :start="start" />
+    <Question v-if="step === 1 && ready" :question="currentQuestions" :count="questionsCount" :results="goToResults" :set-step="setStep" />
+    <Result v-if="step === 2" :correct-answers="correctAnswers" />
+    <!--<Result :correct-answers="correctAnswers" />-->
   </div>
 </template>
 
 <script>
 import Question from './question'
-import Answers from './answers'
 import Result from './result'
+import Difficult from './difficult'
 import Competition from '~/assets/data/competition.json'
-import Results from '~/assets/data/results.json'
-import get from 'lodash/get'
+
+const NORMAL_EASY_COUNT = 10
+const NORMAL_MEDIUM_COUNT = 5
+const HARD_MEDIUM_COUNT = 10
+const HARD_HARD_COUNT = 5
 
 export default {
   components: {
     Question,
-    Answers,
+    Difficult,
     Result
   },
   data() {
     return {
+      step: 0,
       level: 0,
       currentAnswer: 0,
-      successAnswers: 0
-    }
-  },
-  computed: {
-    currentQuestion() {
-      return get(Competition, `${this.currentAnswer}`, {})
-    },
-    currentAnswers() {
-      return get(Competition, [`${this.currentAnswer}`, 'answers'], [])
-    },
-    isEmptyQuestions() {
-      return (Competition.length > this.currentAnswer)
-    },
-    findResults() {
-      let result = 0
-      const keysArray = Object.keys(Results).map(item => parseInt(item))
-      
-      keysArray.forEach(item => {
-        if (this.successAnswers >= item) result = Results[item]
-      })
-      
-      return result
+      successAnswers: 0,
+      currentQuestions: [],
+      ready: false,
+      questionsCount: 15,
+      correctAnswers: 0,
+      currentStep: 1
     }
   },
   methods: {
-    setAnswer(item) {
-      if (item.is_correct) this.successAnswers += this.currentQuestion.value
-  
-      this.currentAnswer++
+    start(level) {
+      this.step = 1
+      if (level === 'normal') {
+        this.createNormalQuestions()
+      } else {
+        this.createHardQuestions()
+      }
     },
-    resetCompetition() {
-      this.currentAnswer = this.successAnswers = 0
+    createNormalQuestions() {
+      const easyQuestionsCount = Competition.easy.length - 1
+      const normalQuestionsCount = Competition.medium.length - 1
+      
+      while (this.currentQuestions.length < NORMAL_EASY_COUNT) {
+        const random = this.random(easyQuestionsCount)
+        console.log('easy-random-1', random)
+        if (!Competition.easy[random].use) {
+          Competition.easy[random].use = true
+          this.currentQuestions.push(Competition.easy[random])
+        }
+      }
+  
+      while (this.currentQuestions.length < (NORMAL_MEDIUM_COUNT + NORMAL_EASY_COUNT)) {
+        const random = this.random(normalQuestionsCount)
+        console.log('easy-random-2', random)
+        if (!Competition.medium[random].use) {
+          Competition.medium[random].use = true
+          this.currentQuestions.push(Competition.medium[random])
+        }
+      }
+      
+      this.currentQuestions.sort(() => .5 - Math.random())
+      
+      localStorage.setItem('questions', JSON.stringify(this.currentQuestions))
+      
+      this.ready = true
+  
+      console.log('easy', this.currentQuestions)
+    },
+    createHardQuestions() {
+      const mediumQuestionsCount = Competition.medium.length - 1
+      const hardQuestionsCount = Competition.hard.length - 1
+  
+      while (this.currentQuestions.length < HARD_MEDIUM_COUNT) {
+        const random = this.random(mediumQuestionsCount)
+        console.log('hard-random-1', random)
+        if (!Competition.medium[random].use) {
+          Competition.medium[random].use = true
+          this.currentQuestions.push(Competition.medium[random])
+        }
+      }
+  
+      while (this.currentQuestions.length < (HARD_MEDIUM_COUNT + HARD_HARD_COUNT)) {
+        const random = this.random(hardQuestionsCount)
+        console.log('hard-random-2', random)
+        if (!Competition.hard[random].use) {
+          Competition.hard[random].use = true
+          this.currentQuestions.push(Competition.hard[random])
+        }
+      }
+  
+      this.currentQuestions.sort(() => .5 - Math.random())
+  
+      localStorage.setItem('questions', JSON.stringify(this.currentQuestions))
+  
+      this.ready = true
+  
+      console.log('hard', this.currentQuestions)
+    },
+    random(max) {
+      let rand = Math.random() * (max + 1)
+      return Math.floor(rand)
+    },
+    goToResults(correctAnswers) {
+      console.log('this.correctAnswers', correctAnswers)
+      this.correctAnswers = correctAnswers
+      this.step = 2
+    },
+    setStep(step) {
+      this.currentStep = step + 1
     }
   }
 }
@@ -72,10 +129,17 @@ export default {
   z-index: 3
   background: #ffffff
   border-radius: 8px
-  padding: 40px
+  padding: 20px
   width: 100%
-  max-width: 860px
   color: #000
+  margin: 40px 0 0 0
+  @include tablet
+    margin: 80px 0 0 0
+    padding: 40px
+  @include desktop
+    margin: 100px 0 0 0
+    max-width: 860px
+  
   
   &-title
     font: bold 14px/14px $font-main

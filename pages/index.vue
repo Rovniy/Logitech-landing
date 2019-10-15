@@ -1,10 +1,10 @@
 <template>
   <main class="container">
-    <!--<SectionFirst />-->
-    <!--<SectionComments />-->
-    <!--<SectionThree />-->
-    <!--<SectionFour />-->
-    <!--<SectionBuy />-->
+    <SectionFirst />
+    <SectionComments />
+    <SectionThree />
+    <SectionFour />
+    <SectionBuy />
     <SectionTest />
     <Footer />
   </main>

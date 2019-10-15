@@ -1,9 +1,11 @@
 <template>
   <section class="section test">
     <div class="test-container">
-      <img class="test-bg" src="images/section-test-bg.png" alt="" loading="lazy">
-      <div class="test-shadow" />
-      <h3 class="test-title">Пройди тест и узнай насколько ты хорошо разбираешься в играх</h3>
+      <!--<img class="test-bg" src="images/section-test-bg.png" alt="" loading="lazy">-->
+      <!--<div class="test-shadow" />-->
+      <h3 class="test-title">
+        Пройди тест и узнай насколько ты хорошо разбираешься в играх
+      </h3>
       <span class="test-separator" />
       <span class="test-desc">
         Друзья!
@@ -48,11 +50,17 @@ export default {
     justify-content: center
     align-items: center
     flex-direction: column
-    padding: 190px 0
     position: relative
-    
+    padding: 40px 20px
+    @include tablet
+      background: url("/images/section-test-bg.png") center -30% / 80% auto no-repeat, radial-gradient(50% 50% at 50% 50%, rgba(188, 213, 221, 0.2) 0%, rgba(87, 87, 87, 0) 100%) center 0 / 50% auto no-repeat
+      padding: 80px 80px 200px
+    @include desktop
+      background: url("/images/section-test-bg.png") center 90% / 110% auto no-repeat, radial-gradient(50% 50% at 50% 50%, rgba(188, 213, 221, 0.2) 0%, rgba(87, 87, 87, 0) 100%) center 0 / 50% auto no-repeat
+      padding: 190px 0
+  
   &-shadow
-    background: radial-gradient(50% 50% at 50% 50%, rgba(188, 213, 221, 0.2) 0%, rgba(87, 87, 87, 0) 100%)
+    background:
     width: 50%
     height: 100%
     position: absolute
@@ -61,15 +69,19 @@ export default {
   
   &-bg
     width: 100%
-    display: block
+    display: none
+    visibility: hidden
     margin: 0 auto
     position: absolute
     top: -800px
     left: 0
     z-index: 1
+    @include tablet
+      display: block
+      visibility: visible
   
   &-title
-    font: bold 38px/46px $font-main
+    font: bold 30px/36px $font-main
     color: #ffffff
     text-transform: uppercase
     display: block
@@ -78,6 +90,8 @@ export default {
     z-index: 3
     text-align: center
     max-width: 750px
+    @include tablet
+      font: bold 38px/46px $font-main
   
   &-separator
     display: block
@@ -85,20 +99,23 @@ export default {
     width: 100%
     max-width: 84px
     height: 6px
-    margin: 20px auto 0
+    margin: 30px auto 0
     @include desktop
-      margin: 20px auto 0
+      margin: 40px auto 0
   
   &-desc
     position: relative
     z-index: 3
-    font: 24px/29px $font-main
+    font: 16px/19px $font-main
     color: #ffffff
     display: block
     max-width: 770px
     width: 100%
-    margin: 40px auto 0
+    margin: 30px auto 0
     text-align: center
+    @include tablet
+      margin: 40px auto 0
+      font: 24px/29px $font-main
   
   &-btn
     background: $color-blue
