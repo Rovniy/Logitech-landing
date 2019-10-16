@@ -47,20 +47,37 @@
             <img src="/images/mvideo.svg" class="right-btn-area-btn__mvideo" loading="lazy" alt="М.Видео">
           </button>
           <div class="right-btn-area-promocode-area">
-            <span class="right-btn-area-promocode-area-text">JHG67E892VDW</span>
-            <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon">
+            <span class="right-btn-area-promocode-area-text">{{ promoCode }}</span>
+            <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon" @click="copy">
           </div>
         </div>
       </div>
     </div>
     <div class="bottom">
-      <span class="bottom__text">Попробуешь пройти тест?</span>
+      <span v-scroll-to="'#sectionTest'" class="bottom__text">Попробуешь пройти тест?</span>
     </div>
   </section>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      promoCode: 'JHG67E892VDW'
+    }
+  },
+  methods: {
+    copy() {
+      const el = document.createElement('textarea')
+      el.value = this.promoCode
+      document.body.appendChild(el)
+      el.select()
+      document.execCommand('copy')
+      document.body.removeChild(el)
+  
+      this.$root.$emit('SHOW_NOTY')
+    }
+  }
 }
 </script>
 
@@ -73,12 +90,14 @@ $shadow-width: 970px
   display: flex
   flex-direction: column
   background: #000
+  padding: 0 0 80px 0
   @include desktop
     height: 100vh
     display: flex
     flex-direction: column
     justify-content: space-between
     align-items: center
+    padding: 0
   
   .shadow
     display: none
@@ -142,12 +161,14 @@ $shadow-width: 970px
         padding: 40px 0 0 0
   
       &_h2
-        font: bold 120px/90px $font-main
+        font: bold 90px/90px $font-main
         color: $color-blue
         width: 100%
         padding: 0 0 0 50px
         text-align: left
         text-transform: uppercase
+        @include tablet
+          font: bold 120px/90px $font-main
         @include desktop
           font: bold 240px/180px $font-main
       &_h1
@@ -329,6 +350,7 @@ $shadow-width: 970px
             text-transform: uppercase
             font: bold 18px/18px $font-main
           &-icon
+            cursor: pointer
             color: #3F3F3F
             margin: 0 0 0 40px
     
@@ -338,22 +360,21 @@ $shadow-width: 970px
       position: relative
       z-index: 2
       display: block
-      height: 113px
+      height: 150px
       
     &__text
       font: bold 18px/22px $font-main
-      color: $color-white
+      color: #000
       text-transform: uppercase
       display: block
+      padding: 18px 40px
+      background: $color-blue
+      border-radius: 2px
       position: relative
+      cursor: pointer
+      &:hover
+        background: $color-blue-hover
       
-      &:after
-        content: ''
-        position: absolute
-        left: 0
-        right: 0
-        bottom: -7px
-        border-bottom: 1px dotted #00B6ED
       &:before
         content: ''
         position: absolute
@@ -362,6 +383,16 @@ $shadow-width: 970px
         width: 16px
         height: 50px
         background: url("/images/section-first-arrow.svg") no-repeat center
+        animation: arrow 1s ease-in-out infinite
+  
+  
+@keyframes arrow
+  0%
+    transform: translateY(0)
+  50%
+    transform: translateY(10px)
+  100%
+    transform: translateY(0)
 
 
 </style>

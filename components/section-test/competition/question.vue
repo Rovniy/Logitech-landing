@@ -3,9 +3,16 @@
     <span class="competition-questions-title">
       {{ currentQuestion.title }}
     </span>
+    <div class="competition-questions-player">
+      <vue-plyr v-if="playerReady" ref="plyr" :menu="false">
+        <audio>
+          <source :src="currentSound" type="audio/mp3">
+        </audio>
+      </vue-plyr>
+    </div>
     <div class="competition-questions-answers">
       <div v-for="(item, key) in currentQuestion.answers" :key="key" :class="['competition-questions-answers-item', {'competition-questions-answers-item-active': key === answer}]" @click="getAnswer(key)">
-        {{ item.text }} {{ item.is_correct }}
+        {{ item.text }}
       </div>
     </div>
     <button :class="['competition-questions-next', {'competition-questions-next-active': answer !== false}]" @click="next">
@@ -39,30 +46,52 @@ export default {
     return {
       step: 0,
       correctAnswers: 0,
-      answer: false
+      answer: false,
+      playerReady: false
     }
   },
   computed: {
     currentQuestion() {
       return this.question[this.step]
+    },
+    currentSound() {
+      return this.currentQuestion.sound
     }
   },
+  mounted() {
+    this.findLastQuestion()
+    this.playerReady = true
+  },
   methods: {
-    getAnswer(key){
+    findLastQuestion() {
+      const lastQuestion = localStorage.getItem('lastQuestion')
+      
+      if (!lastQuestion) return
+      
+      this.step = JSON.parse(lastQuestion)
+      this.setStep(this.step)
+      
+    },
+    getAnswer(key) {
       this.answer = key
-      console.log('this.answer', this.answer)
     },
     next() {
+      this.playerReady = false
+      
       if (this.currentQuestion.answers[this.answer].is_correct) this.correctAnswers++
   
       if (this.step < this.count - 1) {
-      // if (this.step < 5) {
         this.step++
         this.answer = false
         this.setStep(this.step)
+        localStorage.setItem('lastQuestion', this.step)
       } else {
         this.results(this.correctAnswers)
       }
+  
+      setTimeout(() => {
+        this.playerReady = true
+      })
     }
   }
 }
@@ -85,6 +114,12 @@ export default {
     @include tablet
       font: bold 24px/29px $font-main
   
+  &-player
+    width: 100%
+    margin: 20px auto
+    @include tablet
+      width: 400px
+      
   &-answers
     margin: 20px 0 0 0
     width: 100%

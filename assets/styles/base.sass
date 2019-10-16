@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap')
 
-
 html
   font-family: $font-main
   font-size: 16px
@@ -22,3 +21,47 @@ h1, h2, h3, h4, h5
 .section
   display: flex
   width: 100%
+  
+/*************** HOOPER **********/
+.hooper
+  height: auto!important
+  
+.hooper-pagination
+  &:focus
+    outline: none!important
+    border: none!important
+    
+.hooper-pagination
+  bottom: -50px!important
+  .hooper-indicators
+    li
+      .hooper-indicator
+        background: #A8A8A8!important
+        &.is-active
+          background: $color-blue!important
+
+          
+/************* AUDION PLAYER ***********/
+.plyr
+  &__menu
+    display: none!important
+    visibility: hidden
+  &__time
+    display: none!important
+    visibility: hidden
+    @include tablet
+      display: block!important
+      visibility: visible!important
+  &__controls
+    justify-content: center!important
+  &__control
+    &:first-child
+      margin-right: 0!important
+  &__progress
+    &__container
+      
+      max-width: 50%!important
+      @include tablet
+        max-width: none!important
+  
+    

@@ -7,6 +7,7 @@
     <SectionBuy />
     <SectionTest />
     <Footer />
+    <Noty />
   </main>
 </template>
 
@@ -18,6 +19,7 @@ import SectionFour from '@/components/section-four'
 import SectionTest from '@/components/section-test'
 import Footer from '@/components/footer'
 import SectionBuy from '@/components/section-buy'
+import Noty from '@/components/noty'
 
 export default {
   components: {
@@ -27,7 +29,8 @@ export default {
     SectionFour,
     SectionTest,
     Footer,
-    SectionBuy
+    SectionBuy,
+    Noty
   }
 }
 </script>

@@ -20,8 +20,8 @@
             <img src="/images/mvideo.svg" class="right-btn-area-btn__mvideo" loading="lazy" alt="М.Видео">
           </button>
           <div class="right-btn-area-promocode-area">
-            <span class="right-btn-area-promocode-area-text">JHG67E892VDW</span>
-            <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon">
+            <span class="right-btn-area-promocode-area-text">{{ promoCode }}</span>
+            <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon" @click="copy">
           </div>
         </div>
       </div>
@@ -31,6 +31,23 @@
 
 <script>
 export default {
+  data() {
+    return {
+      promoCode: 'JHG67E892VDW'
+    }
+  },
+  methods: {
+    copy() {
+      const el = document.createElement('textarea')
+      el.value = this.promoCode
+      document.body.appendChild(el)
+      el.select()
+      document.execCommand('copy')
+      document.body.removeChild(el)
+  
+      this.$root.$emit('SHOW_NOTY')
+    }
+  }
 }
 </script>
 
@@ -88,11 +105,12 @@ export default {
   .right-btn-area
     margin: 20px auto 0
     background: #161616
-    width: 294px
+    width: 100%
     height: 102px
     border-radius: 4px
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
     @include tablet
+      width: 294px
       margin: 0 0 0 auto
     
     &-btn
@@ -125,13 +143,16 @@ export default {
       flex-direction: row
       align-items: center
       justify-content: center
-      padding: 0 0 0 40px
+      padding: 0
+      @include tablet
+        padding: 0 0 0 40px
       
       &-text
         color: $color-white
         text-transform: uppercase
         font: bold 18px/18px $font-main
       &-icon
+        cursor: pointer
         color: #3F3F3F
         margin: 0 0 0 40px
         

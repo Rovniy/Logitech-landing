@@ -28,6 +28,7 @@ module.exports = {
   },
   loading: { color: '#fff' },
   css: [
+    'vue-plyr/dist/vue-plyr.css',
     { src: resolve(__dirname, 'assets/styles/common.sass'), lang: 'sass' }
   ],
   resolve: {
@@ -36,8 +37,12 @@ module.exports = {
     }
   },
   modules: [
+    'vue-scrollto/nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-150244485-1'
+    }]
   ],
   styleResources: {
     sass: [
@@ -56,5 +61,8 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  plugins: [
+    '~/plugins/plyr'
+  ]
 }

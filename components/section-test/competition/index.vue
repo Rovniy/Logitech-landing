@@ -38,14 +38,26 @@ export default {
       currentStep: 1
     }
   },
+  mounted() {
+    this.findLocalData()
+  },
   methods: {
-    start(level) {
+    findLocalData() {
+      const questions = localStorage.getItem('questions')
+      
+      if (!questions) return
+  
+      this.currentQuestions = JSON.parse(questions)
       this.step = 1
+      this.ready = true
+    },
+    start(level) {
       if (level === 'normal') {
         this.createNormalQuestions()
       } else {
         this.createHardQuestions()
       }
+      this.step = 1
     },
     createNormalQuestions() {
       const easyQuestionsCount = Competition.easy.length - 1

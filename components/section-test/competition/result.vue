@@ -39,6 +39,9 @@ export default {
       })
     
       this.result = result
+      
+      localStorage.removeItem('questions')
+      localStorage.removeItem('lastQuestion')
   
       console.log(this.result)
     }

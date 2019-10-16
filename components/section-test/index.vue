@@ -3,7 +3,7 @@
     <div class="test-container">
       <!--<img class="test-bg" src="images/section-test-bg.png" alt="" loading="lazy">-->
       <!--<div class="test-shadow" />-->
-      <h3 class="test-title">
+      <h3 id="sectionTest" class="test-title">
         Пройди тест и узнай насколько ты хорошо разбираешься в играх
       </h3>
       <span class="test-separator" />

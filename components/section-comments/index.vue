@@ -7,35 +7,29 @@
           Обзоры и отзывы
         </h3>
         <div class="area">
-          <article class="area-item">
-            <span class="area-item-name">Анатолий</span>
-            <span class="area-item-text">
-              Понравилось как гарнитура сидит на голове, очень удобно. Крутилка громкости теперь на чашке и не нужно ловить её на кабеле. Штанга микрофона при поднятии механически отключает микрофон - замечательное и интуитивное решение. Прекрасные, приятные кожеподобные а...
-            </span>
-            <a href="#" target="_blank" class="area-item-read_more">
-              Читать полностью
-            </a>
-          </article>
-      
-          <article class="area-item">
-            <span class="area-item-name">LSoul</span>
-            <span class="area-item-text">
-              Амбишуры полностью охватывают ушную раковину. Звуков из вне, практически не слышно. Понравился микрофон, удобен и очень функционален. В комплекте звукавая карта(переходник с 3,5 на USB) - настройка эквалайзера и т.д. Но можно старым способом 3,5 в комп и уже встроенной звуковой ка...
-            </span>
-            <a href="#" target="_blank" class="area-item-read_more">
-              Читать полностью
-            </a>
-          </article>
-      
-          <article class="area-item">
-            <span class="area-item-name">Евгений Е.</span>
-            <span class="area-item-text">
-              До этого четыре года пользовался G430. В Logitech G432, по сравнению с G430 нашёл для себя следующие минусы: провод стал короче, провод теперь без матерчатой оплётки (на 430 приятнее), амбушюры стали кожаные вместо матерчатых (переставил со старых)...
-            </span>
-            <a href="#" target="_blank" class="area-item-read_more">
-              Читать полностью
-            </a>
-          </article>
+          <hooper v-if="isMobile" :items-to-show="1" :center-mode="true">
+            <slide v-for="item in comments" :key="item.id">
+              <article class="area-item">
+                <span class="area-item-name">{{ item.name }}</span>
+                <span class="area-item-text">{{ item.text }}</span>
+                <a :href="item.link" target="_blank" class="area-item-read_more">
+                  Читать полностью
+                </a>
+              </article>
+            </slide>
+  
+            <hooper-pagination slot="hooper-addons" />
+          </hooper>
+  
+          <div v-if="!isMobile">
+            <article v-for="item in comments" :key="item.id" class="area-item">
+              <span class="area-item-name">{{ item.name }}</span>
+              <span class="area-item-text">{{ item.text }}</span>
+              <a :href="item.link" target="_blank" class="area-item-read_more">
+                Читать полностью
+              </a>
+            </article>
+          </div>
         </div>
       </div>
   
@@ -43,35 +37,25 @@
   
       <!-- REVIEW -->
       <div class="block block-review">
-        <article class="area-item">
-          <span class="area-item-source">4FRAG.RU</span>
-          <span class="area-item-title">
-            Обзор гарнитур Logitech G332 и Logitech G432. Дабл-килл
-          </span>
-          <a href="#" target="_blank" class="area-item-read_more">
-            https://4frags.ru
-          </a>
-        </article>
+        <hooper v-if="isMobile" :items-to-show="1" :center-mode="true">
+          <slide v-for="item in reviews" :key="item.id">
+            <article class="area-item">
+              <span class="area-item-source">{{ item.source }}</span>
+              <span class="area-item-title">{{ item.text }}</span>
+              <a :href="item.link" target="_blank" class="area-item-read_more">{{ item.readMore }}</a>
+            </article>
+          </slide>
     
-        <article class="area-item">
-          <span class="area-item-source">trashbox.ru</span>
-          <span class="area-item-title">
-            Обзор Logitech G432 и Logitech G935: Вам с проводом или без?
-          </span>
-          <a href="#" target="_blank" class="area-item-read_more">
-            https://trashbox.ru
-          </a>
-        </article>
+          <hooper-pagination slot="hooper-addons" />
+        </hooper>
     
-        <article class="area-item">
-          <span class="area-item-source">ЯНДЕКС МАРКЕТ</span>
-          <span class="area-item-title">
-            Игровая гарнитура Logitech G432 с объёмным звуком
-          </span>
-          <a href="#" target="_blank" class="area-item-read_more">
-            https://market.yandex.ru
-          </a>
-        </article>
+        <div v-if="!isMobile">
+          <article v-for="item in reviews" :key="item.id" class="area-item">
+            <span class="area-item-source">{{ item.source }}</span>
+            <span class="area-item-title">{{ item.text }}</span>
+            <a :href="item.link" target="_blank" class="area-item-read_more">{{ item.readMore }}</a>
+          </article>
+        </div>
       </div>
   
       <hr class="section-comments-hr">
@@ -79,45 +63,138 @@
   
       <!-- VIDEO -->
       <div class="block block-video">
-        <article v-for="item in videos" :key="item.id" class="area-item" @click="previewVideo(item.id)">
-          <img :src="`/images/video-${item.id}.jpg`" alt="" loading="lazy" class="area-item-bg">
-          <img :src="`/images/video-${item.id}-icon.png`" alt="" loading="lazy" class="area-item-icon">
-          <span class="area-item-name">{{ item.title }}</span>
-          <div class="area-item-hover">
-            <i class="area-item-hover-icon" />
-          </div>
-        </article>
+        <hooper v-if="isMobile" :items-to-show="1" :center-mode="true">
+          <slide v-for="item in videos" :key="item.id">
+            <article class="area-item" @click="previewVideo(item.href)">
+              <img :src="`/images/video-${item.id}.jpg`" alt="" class="area-item-bg">
+              <img :src="`/images/video-${item.id}-icon.png`" alt="" class="area-item-icon">
+              <span class="area-item-name">{{ item.title }}</span>
+              <div class="area-item-hover">
+                <i class="area-item-hover-icon" />
+              </div>
+            </article>
+          </slide>
+    
+          <hooper-pagination slot="hooper-addons" />
+        </hooper>
+        
+        <div v-if="!isMobile">
+          <article v-for="item in videos" :key="item.id" class="area-item" @click="previewVideo(item.href)">
+            <img :src="`/images/video-${item.id}.jpg`" alt="" loading="lazy" class="area-item-bg">
+            <img :src="`/images/video-${item.id}-icon.png`" alt="" loading="lazy" class="area-item-icon">
+            <span class="area-item-name">{{ item.title }}</span>
+            <div class="area-item-hover">
+              <i class="area-item-hover-icon" />
+            </div>
+          </article>
+        </div>
+      </div>
+      
+      <div v-if="isVideoShow" class="modal-youtube">
+        <div class="modal-youtube-bg" @click="closeVideo" />
+        <iframe
+          class="modal-youtube__frame"
+          :src="`${videoUrl}?autoplay=1&modestbranding=1&rel=0&color=white&showinfo=0&origin=${currentHost}`"
+          allow="accelerometer; autoplay; gyroscope;"
+          allowfullscreen
+        />
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { Hooper, Slide, Pagination as HooperPagination  } from 'hooper'
+import 'hooper/dist/hooper.css'
+
 export default {
+  components: {
+    Hooper,
+    Slide,
+    HooperPagination
+  },
   data() {
     return {
       videos: [
         {
           id: 1,
           title: 'LOGITECH G432 7.1. От классики не убе...',
-          href: 'https://www.youtube.com/watch?v=wy01grzbBUI&t='
+          href: 'https://www.youtube.com/embed/wy01grzbBUI'
         },
         {
           id: 2,
           title: 'Logitech G432 распаковка наушников (П...',
-          href: 'https://www.youtube.com/watch?v=Emf54ncsQKA'
+          href: 'https://www.youtube.com/embed/Emf54ncsQKA'
         },
         {
           id: 3,
           title: 'Logitech g432 интересная игровая гар...',
-          href: 'https://www.youtube.com/watch?v=m6JdJQE0r6s&t='
+          href: 'https://www.youtube.com/embed/m6JdJQE0r6s'
         }
-      ]
+      ],
+      comments: [
+        {
+          id: 1,
+          name: 'CatSnow',
+          text: 'Очень удобно сидят(на моей голове), хорошее шумоподавление. Не особо тяжелые или неудобные. Провода не короткие. Очень большой плюс это колёсико звука на левом наушнике сзади. Также порадовал микрофон, отключающийся при подъёме вверх...',
+          link: 'https://www.dns-shop.ru/product/4494156e36323332/provodnye-nausniki-logitech-g432-cernyj/opinion/'
+        },
+        {
+          id: 2,
+          name: 'Евгений',
+          text: 'Качество звука оправдывает цену более чем. Крутилка громгости теперь находится на чашке и её не надо ловить на кабеле. Микрофон включается и выключается опусканием и поднятием штанги микрофона - не забудете его отключить, когда не используете...',
+          link: 'https://www.mvideo.ru/products/igrovye-naushniki-logitech-g432-981-000770-50126861/reviews'
+        },
+        {
+          id: 3,
+          name: 'Евгений Е.',
+          text: 'Замечательная гарнитура для игр, фильмов и не слишком требовательного прослушивания музыки. Наушники хоть и не потягаются с дорогущей аудиофильской техникой (глупо ждать этого от игровой гарнитуры), но свои деньги явно отыгрывают. Гораздо лучше любого ноунейма...',
+          link: 'https://www.dns-shop.ru/product/4494156e36323332/provodnye-nausniki-logitech-g432-cernyj/opinion/'
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          source: '4FRAG.RU',
+          text: 'Обзор гарнитур Logitech G332 и Logitech G432. Дабл-килл',
+          link: 'https://4frag.ru/obzory_garnitur/obzor-garnitur-logitech-g332-i-logitech-g432-dabl-kill-261.html',
+          readMore: 'https://4frags.ru'
+        },
+        {
+          id: 2,
+          source: 'trashbox.ru',
+          text: 'Обзор Logitech G432 и Logitech G935: Вам с проводом или без?',
+          link: 'https://trashbox.ru/topics/123109/obzor-logitech-g432-i-logitech-g935-vam-s-provodom-ili-bez',
+          readMore: 'https://trashbox.ru'
+        },
+        {
+          id: 3,
+          source: 'ЯНДЕКС МАРКЕТ',
+          text: 'Игровая гарнитура Logitech G432 с объёмным звуком',
+          link: 'https://market.yandex.ru/journal/overview/igrovaja-garnitura-logitech-g432-s-obemnim-zvukom',
+          readMore: 'https://market.yandex.ru'
+        }
+      ],
+      isVideoShow: false,
+      videoUrl: ''
+    }
+  },
+  computed: {
+    isMobile() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    },
+    currentHost() {
+      return window.location.protocol + '//' + location.host
     }
   },
   methods: {
-    previewVideo(id) {
-      console.log(id)
+    previewVideo(href) {
+      console.log(href)
+      this.videoUrl = href
+      this.isVideoShow = true
+    },
+    closeVideo() {
+      this.isVideoShow = false
     }
   }
 }
@@ -146,6 +223,8 @@ $desktop-separator-height: 650px
     align-items: flex-start
     padding: 30px 20px 80px 20px
     margin: 0 auto
+    width: 100%
+    overflow: hidden
     @include desktop
       flex-direction: row
       width: 100%
@@ -213,6 +292,7 @@ $desktop-separator-height: 650px
   
 .block-review
   width: 100%
+  box-sizing: content-box
   position: relative
   @include desktop
     margin-top: 120px
@@ -312,5 +392,37 @@ $desktop-separator-height: 650px
         border-left: 18px solid white
         border-bottom: 9px solid transparent
     
+  
+.modal-youtube
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  display: flex
+  justify-content: center
+  align-items: center
+  z-index: 100
+  
+  &-bg
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: rgba(0,0,0,.8)
+    z-index: 101
+    
+  &__frame
+    border: none
+    max-width: 90%
+    position: relative
+    z-index: 1000
+    @include tablet
+      width: 768px
+      height: 432px
+    @include desktop
+      width: 1200px
+      height: 675px
     
 </style>
