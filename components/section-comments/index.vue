@@ -4,10 +4,10 @@
       <!-- COMMENTS -->
       <div class="block block-comments">
         <h3 class="block-comments-title">
-          Обзоры и отзывы
+          Отзывы и обзоры
         </h3>
         <div class="area">
-          <hooper v-if="isMobile" :items-to-show="1" :center-mode="true">
+          <hooper v-if="isMobile" :items-to-show="1" :center-mode="true" :infinite-scroll="true">
             <slide v-for="item in comments" :key="item.id">
               <article class="area-item">
                 <span class="area-item-name">{{ item.name }}</span>
@@ -37,7 +37,7 @@
   
       <!-- REVIEW -->
       <div class="block block-review">
-        <hooper v-if="isMobile" :items-to-show="1" :center-mode="true">
+        <hooper v-if="isMobile" :items-to-show="1" :center-mode="true" :infinite-scroll="true">
           <slide v-for="item in reviews" :key="item.id">
             <article class="area-item">
               <span class="area-item-source">{{ item.source }}</span>
@@ -63,7 +63,7 @@
   
       <!-- VIDEO -->
       <div class="block block-video">
-        <hooper v-if="isMobile" :items-to-show="1" :center-mode="true">
+        <hooper v-if="isMobile" :items-to-show="1" :center-mode="true" :infinite-scroll="true">
           <slide v-for="item in videos" :key="item.id">
             <article class="area-item" @click="previewVideo(item.href)">
               <img :src="`/images/video-${item.id}.jpg`" alt="" class="area-item-bg">
@@ -136,7 +136,7 @@ export default {
         {
           id: 1,
           name: 'CatSnow',
-          text: 'Очень удобно сидят(на моей голове), хорошее шумоподавление. Не особо тяжелые или неудобные. Провода не короткие. Очень большой плюс это колёсико звука на левом наушнике сзади. Также порадовал микрофон, отключающийся при подъёме вверх...',
+          text: 'Очень удобно сидят (на моей голове), хорошее шумоподавление. Не особо тяжелые или неудобные. Провода не короткие. Очень большой плюс это колёсико звука на левом наушнике сзади. Также порадовал микрофон, отключающийся при подъёме вверх...',
           link: 'https://www.dns-shop.ru/product/4494156e36323332/provodnye-nausniki-logitech-g432-cernyj/opinion/'
         },
         {
@@ -252,6 +252,8 @@ $desktop-separator-height: 650px
     @include desktop
       font: bold 48px/48px $font-main
     
+  .area
+    margin-top: 70px
   
   .area-item
       margin: 90px auto 0
@@ -260,6 +262,9 @@ $desktop-separator-height: 650px
         max-width: 430px
         padding: 0 0 0 56px
         margin: 80px auto 0
+      @include desktop
+        margin: 20px auto 0
+        height: 188px
       &:before
         position: absolute
         top: -50px
@@ -274,13 +279,16 @@ $desktop-separator-height: 650px
       &-name
         font: bold 18px/18px $font-main
         color: #000
+        @include desktop
+          font: bold 24px/1 $font-main
       &-text
-        font: 14px/17px 'Arial', sans-serif
+        font: 14px/17px $font-main
         color: #656565
         display: block
-        margin: 20px 0 0 0
+        margin: 10px 0 0 0
+        text-align: justify
       &-read_more
-        font: 14px/17px 'Arial', sans-serif
+        font: 14px/17px $font-main
         color: $color-blue
         display: block
         text-decoration: none
@@ -292,19 +300,10 @@ $desktop-separator-height: 650px
   
 .block-review
   width: 100%
-  box-sizing: content-box
-  position: relative
   @include desktop
     margin-top: 120px
     padding: 0 20px
-    &:after
-      position: absolute
-      content: ''
-      top: 0
-      right: 0
-      width: 1px
-      height: $desktop-separator-height
-      background: url('/images/misc/dot-dark-ver.gif') repeat-y
+    order: 3
   
   .area-item
     margin: 0 auto 60px
@@ -312,6 +311,9 @@ $desktop-separator-height: 650px
     flex-direction: column
     @include tablet
       max-width: 460px
+    @include desktop
+      margin: 0 auto 20px
+      height: 188px
     &:last-child
       margin: 0 auto
       
@@ -328,7 +330,7 @@ $desktop-separator-height: 650px
     &-read_more
       margin: 10px 0 0 0
       width: 100%
-      font: 14px/17px 'Arial', sans-serif
+      font: 14px/17px $font-main
       color: $color-blue
       display: block
       text-decoration: none
@@ -341,8 +343,19 @@ $desktop-separator-height: 650px
   
 .block-video
   width: 100%
+  box-sizing: content-box
+  position: relative
   @include desktop
     margin-top: 120px
+    width: 85%
+    &:after
+      position: absolute
+      content: ''
+      top: 0
+      right: 0
+      width: 1px
+      height: $desktop-separator-height
+      background: url('/images/misc/dot-dark-ver.gif') repeat-y
 
   .area-item
     max-width: 334px

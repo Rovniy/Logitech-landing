@@ -32,6 +32,8 @@ export default {
 <style lang="sass" scoped>
 .section-four
   background: linear-gradient(180deg, #1D1D1D 0%, #0B0B0B 100%), #262626
+  @include desktop
+    height: 595px
   
   &-container
     width: 100%
@@ -107,5 +109,5 @@ export default {
       text-align: center
     @include desktop
       max-width: $max-width
-      text-align: left
+      text-align: justify
 </style>

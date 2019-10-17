@@ -31,7 +31,7 @@
       <div class="right">
         <div class="right-block">
           <h2 class="right-block-h2">
-            ограниченное предложение на промокод
+            ОГРАНИЧЕННОЕ ПРЕДЛОЖЕНИЕ ПО ПРОМОКОДУ
           </h2>
           <span class="right-block-separator" />
           <span class="right-block-cost">
@@ -39,13 +39,14 @@
             <span class="right-block-cost__red">
               5 490 ₽
             </span>
+            <img class="right-block-cost__red__old" src="images/misc/old_price.svg" alt="old prise">
           </span>
         </div>
         <div class="right-btn-area">
-          <button class="right-btn-area-btn">
+          <a :href="link" class="right-btn-area-btn" target="_blank">
             <span>Купить в</span>
             <img src="/images/mvideo.svg" class="right-btn-area-btn__mvideo" loading="lazy" alt="М.Видео">
-          </button>
+          </a>
           <div class="right-btn-area-promocode-area">
             <span class="right-btn-area-promocode-area-text">{{ promoCode }}</span>
             <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon" @click="copy">
@@ -54,7 +55,7 @@
       </div>
     </div>
     <div class="bottom">
-      <span v-scroll-to="'#sectionTest'" class="bottom__text">Попробуешь пройти тест?</span>
+      <span class="bottom__text">На дно-о-о-о-о ! Внизу ждет крутой тест !</span>
     </div>
   </section>
 </template>
@@ -63,6 +64,7 @@
 export default {
   data() {
     return {
+      link: process.env.MVIDEO_LINK,
       promoCode: 'JHG67E892VDW'
     }
   },
@@ -161,16 +163,16 @@ $shadow-width: 970px
         padding: 40px 0 0 0
   
       &_h2
-        font: bold 90px/90px $font-main
+        font: bold 90px/90px $font-semi
         color: $color-blue
         width: 100%
         padding: 0 0 0 50px
         text-align: left
         text-transform: uppercase
         @include tablet
-          font: bold 120px/90px $font-main
+          font: bold 120px/90px $font-semi
         @include desktop
-          font: bold 240px/180px $font-main
+          font: bold 240px/180px $font-semi
       &_h1
         font: bold 18px/22px $font-main
         color: $color-white
@@ -190,7 +192,7 @@ $shadow-width: 970px
         justify-content: center
         align-items: center
         position: absolute
-        padding: 4px 7px 3px
+        padding: 4px 7px
         transform: rotateZ(-90deg)
         top: 150px
         left: -25px
@@ -205,14 +207,14 @@ $shadow-width: 970px
           margin: 40px 0 0 52px
   
         &-text
-          font: bold 10px/10px 'Arial', sans-serif
+          font: bold 10px/10px $font-main
           color: #000000
           text-transform: uppercase
           display: block
           margin: 2px 0 0 0
         &-g
           margin: 0 0 0 5px
-          font: bold 18px/18px $font-main
+          font: bold 18px/18px $font-semi
           color: #000000
           text-transform: uppercase
   
@@ -299,7 +301,10 @@ $shadow-width: 970px
           
           &__red
             margin-left: 0
-            color: $color-red
+            color: $color-blue
+            &__old
+              margin: 0 0 0 10px
+              height: 20px
             
       &-btn-area
         margin: 20px auto 0
@@ -325,12 +330,16 @@ $shadow-width: 970px
           flex-direction: row
           justify-content: center
           align-items: center
+          text-decoration: none
+          &:focus
+            outline: none
           
           span
             color: $color-white
             font: bold 14px/14px $font-main
             display: flex
             text-transform: uppercase
+            
           &__mvideo
             height: 24px
             margin: 0 0 0 15px
@@ -363,17 +372,14 @@ $shadow-width: 970px
       height: 150px
       
     &__text
-      font: bold 18px/22px $font-main
-      color: #000
+      font: bold 24px/1 $font-main
+      color: #fff
       text-transform: uppercase
       display: block
       padding: 18px 40px
-      background: $color-blue
+      background: transparent
       border-radius: 2px
       position: relative
-      cursor: pointer
-      &:hover
-        background: $color-blue-hover
       
       &:before
         content: ''

@@ -2,11 +2,19 @@ const { resolve } = require('path')
 
 module.exports = {
   mode: 'spa',
+  env: {
+    MVIDEO_LINK: 'https://www.mvideo.ru/products/igrovye-naushniki-logitech-g432-981-000770-50126861',
+  },
   head: {
     title: 'Logitech G432 Gaming Headsets',
+    
     meta: [
       {
         charset: 'utf-8'
+      },
+      {
+        name: 'author',
+        content: 'Ravy & Seenix'
       },
       {
         name: 'viewport',

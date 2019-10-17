@@ -17,7 +17,7 @@
         </h3>
         <span class="text-block-separator" />
         <p class="text-block-text">
-          премиум качества с поворотом на 90 градусов обеспечивают комфортную посадку
+          Премиум качества с поворотом на 90 градусов обеспечивают комфортную посадку
         </p>
       </div>
     </div>
@@ -107,6 +107,6 @@ export default {
       text-align: center
     @include desktop
       max-width: $max-width
-      text-align: left
+      text-align: justify
 
 </style>

@@ -4,19 +4,19 @@
       <!--<img class="test-bg" src="images/section-test-bg.png" alt="" loading="lazy">-->
       <!--<div class="test-shadow" />-->
       <h3 id="sectionTest" class="test-title">
-        Пройди тест и узнай насколько ты хорошо разбираешься в играх
+        ПРОЙДИ ТЕСТ И УЗНАЙ НАСКОЛЬКО ХОРОШО ТЫ РАЗБИРАЕШЬСЯ В ИГРАХ
       </h3>
       <span class="test-separator" />
       <span class="test-desc">
-        Друзья!
-      </span>
-      <span class="test-desc">
-        Мы уверены, что вы наверняка играли во множество популярных тайтлов, и знаете оттуда всевозможные цитаты, большинство из которых уже расхватали на мемы. Но сможете ли вы отгадать все эти игры?
+        Если ты хочешь доказать, что ты геймер со стажем, этот тест для тебя! Звук в играх сильно влияет на общий успех. Какие-то из них расхватали на мемы, другие до сих пор навевают воспоминания. Проверь свои знания!
       </span>
       <button v-show="!isShow" class="test-btn" @click="showTest">
         Пройти тест
       </button>
       <Competition v-show="isShow" />
+      <div v-scroll-to="'#container'" class="go-up-area">
+        <img class="go-up-area-btn" src="/images/misc/gotoup.svg" alt="">
+      </div>
     </div>
   </section>
 </template>
@@ -109,10 +109,10 @@ export default {
     font: 16px/19px $font-main
     color: #ffffff
     display: block
-    max-width: 770px
+    max-width: 700px
     width: 100%
     margin: 30px auto 0
-    text-align: center
+    text-align: justify
     @include tablet
       margin: 40px auto 0
       font: 24px/29px $font-main
@@ -135,5 +135,21 @@ export default {
       background: $color-blue-hover
     &:focus
       outline: none
+    
+  
+.go-up-area
+  display: none
+  @include tablet
+    display: block
+    width: 70px
+    height: 70px
+    position: absolute
+    right: 80px
+    bottom: 60px
+    cursor: pointer
+  @include desktop
+    right: 60px
+  &-btn
+    width: 100%
     
 </style>

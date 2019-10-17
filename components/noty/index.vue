@@ -1,6 +1,9 @@
 <template>
   <div :class="['noty', {'noty-active': is_show}]">
-    Промокод скопирован в буфер обмена
+    <a class="link" :href="link" target="_blank">
+      <span>Промокод скопирован! Перейти в</span>
+      <img src="/images/mvideo.svg" class="img" loading="lazy" alt="М.Видео">
+    </a>
   </div>
 </template>
 
@@ -8,7 +11,8 @@
 export default {
   data() {
     return {
-      is_show: false
+      is_show: false,
+      link: process.env.MVIDEO_LINK
     }
   },
   mounted(){
@@ -20,7 +24,7 @@ export default {
       
       setTimeout(() => {
         this.is_show = false
-      }, 3000)
+      }, 5000)
     }
   }
 }
@@ -31,14 +35,28 @@ export default {
   position: fixed
   top: 20px
   right: 20px
-  color: #FFFFFF
   background: $color-blue
   padding: 20px
-  text-align: center
   transition: .5s ease-in-out
   transform: translateX(500px)
   z-index: 50
+  
   &-active
     transform: translateX(0)
+  
+  .link
+    color: #000
+    text-decoration: none
+    text-transform: uppercase
+    text-align: center
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    flex-direction: row
+    cursor: pointer
+  
+  .img
+    height: 20px
+    margin: 0 0 0 10px
 
 </style>

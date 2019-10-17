@@ -1,20 +1,27 @@
 <template>
   <div class="difficult-area">
-    <span class="difficult-area-title">выбрать уровень сложности</span>
+    <span class="difficult-area-title">выбери уровень сложности</span>
     <div class="difficult-area-select">
       <div class="difficult-area-select-left">
         <div class="difficult-area-select-left-buttons">
           <div :class="['difficult-area-select-left-buttons-item', {'difficult-area-select-left-buttons-item-active': level === 'normal'}]" @click="setLevel('normal')">
-            Нормальный <span v-if="level === 'normal'">(выбрано)</span>
+            <span v-if="level !== 'normal'">Нормальный (15 вопросов)</span>
+            <span v-if="level === 'normal'">Нормальный (выбрано)</span>
           </div>
           <div :class="['difficult-area-select-left-buttons-item', {'difficult-area-select-left-buttons-item-active': level === 'hard'}]" @click="setLevel('hard')">
-            Кошмарный <span v-if="level === 'hard'">(выбрано)</span>
+            <span v-if="level !== 'hard'">Сложный (15 вопросов)</span>
+            <span v-if="level === 'hard'">Сложный (выбрано)</span>
+          </div>
+          <div :class="['difficult-area-select-left-buttons-item', {'difficult-area-select-left-buttons-item-active': level === 'nightmare'}]" @click="setLevel('nightmare')">
+            <span v-if="level !== 'nightmare'">Кошмарный (30 вопросов)</span>
+            <span v-if="level === 'nightmare'">Кошмарный (выбрано)</span>
           </div>
         </div>
       </div>
       <div class="difficult-area-select-right">
-        <img v-show="level === 'normal'" class="difficult-area-select-right-img" src="/images/misc/level_normal.png" alt="" loading="lazy">
-        <img v-show="level === 'hard'" class="difficult-area-select-right-img" src="/images/misc/level_hard.png" alt="" loading="lazy">
+        <img v-show="level === 'normal'" class="difficult-area-select-right-img" src="/images/misc/level_normal.jpg" alt="" loading="lazy">
+        <img v-show="level === 'hard'" class="difficult-area-select-right-img" src="/images/misc/level_hard.jpg" alt="" loading="lazy">
+        <img v-show="level === 'nightmare'" class="difficult-area-select-right-img" src="/images/misc/level_nightmare.jpg" alt="" loading="lazy">
       </div>
     </div>
     <button class="difficult-area-next" @click="start(level)">
@@ -53,6 +60,8 @@ export default {
     font: bold 14px/14px $font-main
     color: #000000
     text-transform: uppercase
+    text-align: center
+    display: block
   
   &-select
     display: flex
@@ -87,7 +96,7 @@ export default {
           text-transform: none
           border-bottom: 1px solid #EAEAEA
           cursor: pointer
-          &:nth-child(2)
+          &:nth-child(3)
             border: none
           &-active
             background: $color-blue
@@ -130,5 +139,6 @@ export default {
       cursor: pointer
     &:focus
       outline: none
-
+    @include desktop
+      font: 18px/18px $font-main
 </style>

@@ -11,14 +11,15 @@
           <span class="buy-area-cost__red">
             5 490 ₽
           </span>
+          <img class="right-block-cost__red__old" src="images/misc/old_price.svg" alt="old prise">
         </span>
       </div>
       <div class="buy-area__right">
         <div class="right-btn-area">
-          <button class="right-btn-area-btn">
+          <a :href="link" class="right-btn-area-btn" target="_blank">
             <span>Купить в</span>
             <img src="/images/mvideo.svg" class="right-btn-area-btn__mvideo" loading="lazy" alt="М.Видео">
-          </button>
+          </a>
           <div class="right-btn-area-promocode-area">
             <span class="right-btn-area-promocode-area-text">{{ promoCode }}</span>
             <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon" @click="copy">
@@ -33,6 +34,7 @@
 export default {
   data() {
     return {
+      link: process.env.MVIDEO_LINK,
       promoCode: 'JHG67E892VDW'
     }
   },
@@ -54,7 +56,10 @@ export default {
 <style lang="sass" scoped>
 .section-buy
   background: linear-gradient(180deg, #1D1D1D 0%, #2D2D2D 136.39%), #000000
-  
+  @include desktop
+    background: #000
+    border-bottom: 3px solid $color-blue
+
 .buy-area
   width: 100%
   max-width: 294px
@@ -68,15 +73,20 @@ export default {
     max-width: 768px
     flex-direction: row
   @include desktop
-    max-width: 970px
+    max-width: 1100px
+    padding: 80px 40px
   
   &__left, &__right
     width: 100%
     @include tablet
       width: 50%
   
+  &__right
+    align-items: center
+    display: flex
+  
   &-title
-    font: bold 18px/22px $font-main
+    font: bold 36px/44px $font-main
     text-transform: uppercase
     color: #ffffff
     text-align: left
@@ -90,7 +100,10 @@ export default {
     
     &__red
       margin-left: 0
-      color: $color-red
+      color: $color-blue
+      &__old
+        margin: 0 0 0 10px
+        height: 20px
   
   &-separator
     display: block
@@ -125,6 +138,9 @@ export default {
       flex-direction: row
       justify-content: center
       align-items: center
+      text-decoration: none
+      &:focus
+        outline: none
       
       span
         color: $color-white

@@ -1,9 +1,9 @@
 <template>
   <div class="competition-area">
-    <span v-if="step === 1 && ready" class="competition-area-title">Вопросы ({{ currentStep }}/{{ questionsCount }})</span>
+    <span v-if="step === 1 && ready" class="competition-area-title">Вопросы ({{ currentStep }}/{{ totalQuestionsCount }})</span>
     <Difficult v-if="step === 0" :start="start" />
-    <Question v-if="step === 1 && ready" :question="currentQuestions" :count="questionsCount" :results="goToResults" :set-step="setStep" />
-    <Result v-if="step === 2" :correct-answers="correctAnswers" />
+    <Question v-if="step === 1 && ready" :question="currentQuestions" :count="totalQuestionsCount" :results="goToResults" :set-step="setStep" />
+    <Result v-if="step === 2" :correct-answers="correctAnswers" :do-again="doAgain" />
     <!--<Result :correct-answers="correctAnswers" />-->
   </div>
 </template>
@@ -18,6 +18,8 @@ const NORMAL_EASY_COUNT = 10
 const NORMAL_MEDIUM_COUNT = 5
 const HARD_MEDIUM_COUNT = 10
 const HARD_HARD_COUNT = 5
+const NIGHTMARE_MEDIUM_COUNT = 20
+const NIGHTMARE_HARD_COUNT = 10
 
 export default {
   components: {
@@ -33,15 +35,24 @@ export default {
       successAnswers: 0,
       currentQuestions: [],
       ready: false,
-      questionsCount: 15,
       correctAnswers: 0,
       currentStep: 1
+    }
+  },
+  computed: {
+    totalQuestionsCount() {
+      return this.currentQuestions.length
     }
   },
   mounted() {
     this.findLocalData()
   },
   methods: {
+    doAgain() {
+      localStorage.removeItem('questions')
+      localStorage.removeItem('lastQuestion')
+      this.step = 0
+    },
     findLocalData() {
       const questions = localStorage.getItem('questions')
       
@@ -52,11 +63,16 @@ export default {
       this.ready = true
     },
     start(level) {
+      localStorage.setItem('level', level)
+      
       if (level === 'normal') {
         this.createNormalQuestions()
-      } else {
+      } else if (level === 'hard') {
         this.createHardQuestions()
+      } else {
+        this.createNightmareQuestions()
       }
+      
       this.step = 1
     },
     createNormalQuestions() {
@@ -68,7 +84,11 @@ export default {
         console.log('easy-random-1', random)
         if (!Competition.easy[random].use) {
           Competition.easy[random].use = true
-          this.currentQuestions.push(Competition.easy[random])
+          
+          const list = Competition.easy[random]
+          list.answers.sort(() => Math.random() - 0.5)
+          
+          this.currentQuestions.push(list)
         }
       }
   
@@ -77,11 +97,15 @@ export default {
         console.log('easy-random-2', random)
         if (!Competition.medium[random].use) {
           Competition.medium[random].use = true
-          this.currentQuestions.push(Competition.medium[random])
+  
+          const list = Competition.medium[random]
+          list.answers.sort(() => Math.random() - 0.5)
+          
+          this.currentQuestions.push(list)
         }
       }
       
-      this.currentQuestions.sort(() => .5 - Math.random())
+      this.currentQuestions.sort(() => Math.random() - 0.5)
       
       localStorage.setItem('questions', JSON.stringify(this.currentQuestions))
       
@@ -98,7 +122,11 @@ export default {
         console.log('hard-random-1', random)
         if (!Competition.medium[random].use) {
           Competition.medium[random].use = true
-          this.currentQuestions.push(Competition.medium[random])
+          
+          const list = Competition.medium[random]
+          list.answers.sort(() => Math.random() - 0.5)
+          
+          this.currentQuestions.push(list)
         }
       }
   
@@ -107,17 +135,59 @@ export default {
         console.log('hard-random-2', random)
         if (!Competition.hard[random].use) {
           Competition.hard[random].use = true
-          this.currentQuestions.push(Competition.hard[random])
+  
+          const list = Competition.medium[random]
+          list.answers.sort(() => Math.random() - 0.5)
+          
+          this.currentQuestions.push(list)
         }
       }
   
-      this.currentQuestions.sort(() => .5 - Math.random())
+      this.currentQuestions.sort(() => Math.random() - 0.5)
   
       localStorage.setItem('questions', JSON.stringify(this.currentQuestions))
   
       this.ready = true
   
       console.log('hard', this.currentQuestions)
+    },
+    createNightmareQuestions() {
+      const mediumQuestionsCount = Competition.medium.length - 1
+      const hardQuestionsCount = Competition.hard.length - 1
+  
+      while (this.currentQuestions.length < NIGHTMARE_MEDIUM_COUNT) {
+        const random = this.random(mediumQuestionsCount)
+        console.log('hard-random-1', random)
+        if (!Competition.medium[random].use) {
+          Competition.medium[random].use = true
+      
+          const list = Competition.medium[random]
+          list.answers.sort(() => Math.random() - 0.5)
+      
+          this.currentQuestions.push(list)
+        }
+      }
+  
+      while (this.currentQuestions.length < (NIGHTMARE_MEDIUM_COUNT + NIGHTMARE_HARD_COUNT)) {
+        const random = this.random(hardQuestionsCount)
+        console.log('hard-random-2', random)
+        if (!Competition.hard[random].use) {
+          Competition.hard[random].use = true
+      
+          const list = Competition.medium[random]
+          list.answers.sort(() => Math.random() - 0.5)
+      
+          this.currentQuestions.push(list)
+        }
+      }
+  
+      this.currentQuestions.sort(() => Math.random() - 0.5)
+  
+      localStorage.setItem('questions', JSON.stringify(this.currentQuestions))
+  
+      this.ready = true
+  
+      console.log('nightmare', this.currentQuestions)
     },
     random(max) {
       let rand = Math.random() * (max + 1)

@@ -76,6 +76,8 @@ export default {
       this.answer = key
     },
     next() {
+      if (this.answer === false) return
+      
       this.playerReady = false
       
       if (this.currentQuestion.answers[this.answer].is_correct) this.correctAnswers++
@@ -169,5 +171,7 @@ export default {
     &-active
       color: #FFFFFF
       background: #000000
-      
+    @include desktop
+      font: 18px/18px $font-main
+
 </style>

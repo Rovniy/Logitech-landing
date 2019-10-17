@@ -41,7 +41,7 @@ export default {
       text-align: left
     
     &-copy
-      font: 14px/14px 'Arial'
+      font: 14px/14px $font-main
       color: #000
     
   &-right
@@ -66,6 +66,5 @@ export default {
       &-link
         &:nth-child(2)
           margin: 0 0 0 35px
-        &-img
     
 </style>

@@ -1,9 +1,17 @@
 <template>
-  <main class="container">
+  <main id="container" class="container">
     <SectionFirst />
     <SectionComments />
-    <SectionThree />
-    <SectionFour />
+    <hooper v-if="!isMobile" :items-to-show="1" :infinite-scroll="true">
+      <slide>
+        <SectionThree />
+      </slide>
+      <slide>
+        <SectionFour />
+      </slide>
+    </hooper>
+    <SectionThree v-if="isMobile" />
+    <SectionFour v-if="isMobile" />
     <SectionBuy />
     <SectionTest />
     <Footer />
@@ -20,6 +28,7 @@ import SectionTest from '@/components/section-test'
 import Footer from '@/components/footer'
 import SectionBuy from '@/components/section-buy'
 import Noty from '@/components/noty'
+import { Hooper, Slide } from 'hooper'
 
 export default {
   components: {
@@ -30,7 +39,14 @@ export default {
     SectionTest,
     Footer,
     SectionBuy,
-    Noty
+    Noty,
+    Hooper,
+    Slide
+  },
+  computed: {
+    isMobile() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    }
   }
 }
 </script>

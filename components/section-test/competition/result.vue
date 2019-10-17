@@ -8,22 +8,52 @@
         <span class="competition-result-image-area-text-txt">{{ result.text }}</span>
       </div>
     </div>
+    <div class="share">
+      <script src="/library/share.js" />
+      <div class="ya-share2"
+           data-services="vkontakte,facebook,twitter,linkedin"
+           :data-title="getFullTitle"
+           :data-description="getFullTitle"
+           data-hashtags="Logitech, G432, новинки@logitech, LogitechG432"
+           :data-image="getImageUrl"
+           data-lang="ru"
+           data-size="m"
+           data-url="https://headsets.logitech.promo"
+      />
+    </div>
+    <div class="go-again">
+      <span class="go-again-text" @click="doAgain">Пройти тест еще раз</span>
+    </div>
   </div>
 </template>
 
 <script>
 import Results from '~/assets/data/results.json'
 
+const HASH_TAG = '#LogitechG432.'
+
 export default {
   props: {
     correctAnswers: {
       type: Number,
       default: 0
+    },
+    doAgain: {
+      type: Function,
+      default: () => null
     }
   },
   data() {
     return {
       result: {}
+    }
+  },
+  computed: {
+    getImageUrl() {
+      return location.protocol + '//' + location.host + this.result.image
+    },
+    getFullTitle() {
+      return `${HASH_TAG} ${this.result.text}`
     }
   },
   mounted() {
@@ -33,9 +63,11 @@ export default {
     findResults() {
       let result = 0
       const keysArray = Object.keys(Results).map(item => parseInt(item))
-    
+      const forCalculate = this.correctAnswers
+      const levelCoefficient = localStorage.getItem('level') === 'nightmare' ? forCalculate / 2 : this.correctAnswers
+      
       keysArray.forEach(item => {
-        if (this.correctAnswers >= item) result = Results[item]
+        if (levelCoefficient >= item) result = Results[item]
       })
     
       this.result = result
@@ -44,7 +76,7 @@ export default {
       localStorage.removeItem('lastQuestion')
   
       console.log(this.result)
-    }
+    },
   }
 }
 </script>
@@ -123,4 +155,19 @@ export default {
         color: #000
         font: bold 18px/22px $font-main
       
+  
+.share
+  text-align: center
+  
+.go-again
+  display: flex
+  justify-content: center
+  align-items: center
+  margin: 40px auto 0
+  
+  &-text
+    font: 14px/14px $font-main
+    color: #000
+    text-transform: uppercase
+    cursor: pointer
 </style>
