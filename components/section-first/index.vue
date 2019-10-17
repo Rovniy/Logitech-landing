@@ -43,7 +43,7 @@
           </span>
         </div>
         <div class="right-btn-area">
-          <a :href="link" class="right-btn-area-btn" target="_blank">
+          <a :href="link" rel="noopener" class="right-btn-area-btn" target="_blank">
             <span>Купить в</span>
             <img src="/images/mvideo.svg" class="right-btn-area-btn__mvideo" loading="lazy" alt="М.Видео">
           </a>
