@@ -1,7 +1,7 @@
 <template>
   <div :class="['noty', {'noty-active': is_show}]">
     <a class="link" :href="link" target="_blank">
-      <span>Промокод скопирован! Перейти в</span>
+      <span>Промокод скопирован! <span class="invisible">Перейти в</span></span>
       <img src="/images/mvideo.svg" class="img" loading="lazy" alt="М.Видео">
     </a>
   </div>
@@ -55,8 +55,16 @@ export default {
     flex-direction: row
     cursor: pointer
   
+  .invisible
+    display: none
+    @include desktop
+      display: inline
   .img
     height: 20px
     margin: 0 0 0 10px
+    display: none
+    visibility: hidden
+    @include desktop
+      display: block
 
 </style>

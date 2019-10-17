@@ -2,7 +2,12 @@
   <main id="container" class="container">
     <SectionFirst />
     <SectionComments />
-    <hooper v-if="!isMobile" :items-to-show="1" :infinite-scroll="true">
+    <hooper v-if="!isMobile"
+            :items-to-show="1"
+            :infinite-scroll="true"
+            :auto-play="true"
+            :play-speed="3000"
+    >
       <slide>
         <SectionThree />
       </slide>
