@@ -22,7 +22,7 @@
           </a>
           <div class="right-btn-area-promocode-area">
             <span class="right-btn-area-promocode-area-text">{{ promoCode }}</span>
-            <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon" @click="copy">
+            <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon" alt="" @click="copy">
           </div>
         </div>
       </div>

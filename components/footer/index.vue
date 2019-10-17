@@ -4,10 +4,10 @@
       <span class="footer-left-copy">© 2019 Logitech. Все права защищены</span>
     </div>
     <div class="footer-right">
-      <a class="footer-right-item-link" href="https://vk.com/logitech" target="_blank">
+      <a class="footer-right-item-link" rel="noopener" href="https://vk.com/logitech" target="_blank">
         <img class="footer-right-item-link-img" src="images/misc/vk.svg" loading="lazy" alt="Logitech Vkontakte">
       </a>
-      <a class="footer-right-item-link" href="https://www.facebook.com/logitechru/" target="_blank">
+      <a class="footer-right-item-link" rel="noopener" href="https://www.facebook.com/logitechru/" target="_blank">
         <img class="footer-right-item-link-img" src="images/misc/facebook.svg" loading="lazy" alt="Logitech Facebook">
       </a>
     </div>

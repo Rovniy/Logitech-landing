@@ -6,6 +6,9 @@ module.exports = {
     MVIDEO_LINK: 'https://www.mvideo.ru/products/igrovye-naushniki-logitech-g432-981-000770-50126861',
   },
   head: {
+    htmlAttrs: {
+      lang: 'ru'
+    },
     title: 'Игровая гарнитура Logitech G432 с поддержкой технологии объемного звучания 7.1',
     meta: [
       { charset: 'utf-8' },

@@ -12,7 +12,7 @@
               <article class="area-item">
                 <span class="area-item-name">{{ item.name }}</span>
                 <span class="area-item-text">{{ item.text }}</span>
-                <a :href="item.link" target="_blank" class="area-item-read_more">
+                <a :href="item.link" rel="noopener" target="_blank" class="area-item-read_more">
                   Читать полностью
                 </a>
               </article>
@@ -25,7 +25,7 @@
             <article v-for="item in comments" :key="item.id" class="area-item">
               <span class="area-item-name">{{ item.name }}</span>
               <span class="area-item-text">{{ item.text }}</span>
-              <a :href="item.link" target="_blank" class="area-item-read_more">
+              <a :href="item.link" rel="noopener" target="_blank" class="area-item-read_more">
                 Читать полностью
               </a>
             </article>
@@ -42,7 +42,7 @@
             <article class="area-item">
               <span class="area-item-source">{{ item.source }}</span>
               <span class="area-item-title">{{ item.text }}</span>
-              <a :href="item.link" target="_blank" class="area-item-read_more">{{ item.readMore }}</a>
+              <a :href="item.link" rel="noopener" target="_blank" class="area-item-read_more">{{ item.readMore }}</a>
             </article>
           </slide>
     
@@ -53,7 +53,7 @@
           <article v-for="item in reviews" :key="item.id" class="area-item">
             <span class="area-item-source">{{ item.source }}</span>
             <span class="area-item-title">{{ item.text }}</span>
-            <a :href="item.link" target="_blank" class="area-item-read_more">{{ item.readMore }}</a>
+            <a :href="item.link" rel="noopener" target="_blank" class="area-item-read_more">{{ item.readMore }}</a>
           </article>
         </div>
       </div>
