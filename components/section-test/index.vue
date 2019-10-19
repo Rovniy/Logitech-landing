@@ -1,19 +1,14 @@
 <template>
-  <section class="section test">
+  <section v-waypoint="{ active: !is_visible, callback: onWaypoint }" class="section test">
     <div class="test-container">
-      <!--<img class="test-bg" src="images/section-test-bg.png" alt="" loading="lazy">-->
-      <!--<div class="test-shadow" />-->
-      <h3 id="sectionTest" class="test-title">
+      <h3 id="sectionTest" class="test-title animated" :class="{'fadeIn': is_visible}">
         ПРОЙДИ ТЕСТ И УЗНАЙ НАСКОЛЬКО ХОРОШО ТЫ РАЗБИРАЕШЬСЯ В ИГРАХ
       </h3>
-      <span class="test-separator" />
-      <span class="test-desc">
+      <span class="test-separator animated delay-1s" :class="{'fadeIn': is_visible}" />
+      <span class="test-desc animated" :class="{'fadeIn': is_visible}">
         Если ты хочешь доказать, что ты геймер со стажем, этот тест для тебя! Звук в играх сильно влияет на общий успех. Какие-то из них расхватали на мемы, другие до сих пор навевают воспоминания. Проверь свои знания!
       </span>
-      <button v-show="!isShow" class="test-btn" @click="showTest">
-        Пройти тест
-      </button>
-      <Competition v-show="isShow" />
+      <Competition class="animated" :class="{'fadeInUpBig': is_visible}" />
       <div v-scroll-to="'#container'" class="go-up-area">
         <img class="go-up-area-btn" src="/images/misc/gotoup.svg" alt="">
       </div>
@@ -30,12 +25,14 @@ export default {
   },
   data() {
     return {
-      isShow: true
+      is_visible: false
     }
   },
   methods: {
-    showTest() {
-      this.isShow = !this.isShow
+    onWaypoint ({ going }) {
+      if (going === this.$waypointMap.GOING_IN) {
+        this.is_visible = true
+      }
     }
   }
 }
@@ -149,6 +146,9 @@ export default {
     cursor: pointer
   @include desktop
     right: 60px
+    &:hover
+      transform: scale(1.1)
+      transition: .2s
   &-btn
     width: 100%
     

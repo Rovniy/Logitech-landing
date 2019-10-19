@@ -1,23 +1,26 @@
 <template>
   <section class="section  section-three">
-    <div class="section-three-container">
-      <div class="headset-area">
+    <div v-waypoint="{ active: !is_visible, callback: onWaypoint }" class="section-three-container">
+      <div class="headset-area animated" :class="{'fadeIn': is_visible}">
         <img class="headset-area-img" src="/images/section-three-bg-mobile.png" loading="lazy" alt="Logitech 432">
       </div>
       <div class="text-block">
-        <h3 class="text-block-main">
-          высокое качество объемного звучания
+        <!-- BLOCK -->
+        <h3 class="text-block-main animated" :class="{'fadeInRight': is_visible}">
+          ГРОМКИЙ И РАЗБОРЧИВЫЙ ЗВУК ПРИ ГОЛОСОВОМ ОБЩЕНИИ
         </h3>
-        <span class="text-block-separator" />
-        <p class="text-block-text">
-          Технология объемного звука DTS: Headphone X 2.0 позволяет точно передавать положение источника звука в трехмерном пространстве, а затем передавать их на динамики 7.1. Улучшенные 50-миллимитровые диффузоры обеспечивают насыщенный звук и точную передачу низких частот
+        <span class="text-block-separator animated delay-1s" :class="{'fadeInRight': is_visible}" />
+        <p class="text-block-text animated" :class="{'fadeInRight': is_visible}">
+          Благодаря современному микрофону увеличенного размера (6 мм) ты никогда не потеряешь связь с напарниками. Функция отключения при повороте вверх позволяет выключить голосовую связь, когда в ней нет необходимости.
         </p>
-        <h3 class="text-block-main">
-          улучшенные амбушюры из искусственной кожи
+  
+        <!-- BLOCK -->
+        <h3 class="text-block-main animated" :class="{'fadeInRight': is_visible}">
+          ТЕХНОЛОГИЯ DTS HEADPHONE:X 2.0
         </h3>
-        <span class="text-block-separator" />
-        <p class="text-block-text">
-          Премиум качества с поворотом на 90 градусов обеспечивают комфортную посадку
+        <span class="text-block-separator animated delay-1s" :class="{'fadeInRight': is_visible}" />
+        <p class="text-block-text animated" :class="{'fadeInRight': is_visible}">
+          Технология объемного звучания нового поколения DTS Headphone:X 2.0 в сочетании с ПО Logitech G HUB позволит тебе обнаружить крадущегося противника, понять, что неприятель пользуется особыми способностями, и насладиться звуками окружающего мира. Объемное звучание, создаваемое 7.1-канальной системой, дает уникальную возможность ощутить себя в эпицентре происходящего.
         </p>
       </div>
     </div>
@@ -26,6 +29,18 @@
 
 <script>
 export default {
+  data() {
+    return {
+      is_visible: false
+    }
+  },
+  methods: {
+    onWaypoint ({ going }) {
+      if (going === this.$waypointMap.GOING_IN) {
+        this.is_visible = true
+      }
+    }
+  }
 }
 </script>
 

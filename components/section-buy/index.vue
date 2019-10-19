@@ -3,7 +3,7 @@
     <div class="buy-area">
       <div class="buy-area__left">
         <h3 class="buy-area-title">
-          Ограниченное предложение по промокоду
+          Успей купить по промокоду
         </h3>
         <span class="buy-area-separator" />
         <span class="buy-area-cost">
@@ -104,6 +104,7 @@ export default {
       &__old
         margin: 0 0 0 10px
         height: 20px
+        opacity: .7
   
   &-separator
     display: block

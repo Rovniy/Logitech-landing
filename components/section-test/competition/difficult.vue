@@ -98,6 +98,9 @@ export default {
           cursor: pointer
           &:nth-child(3)
             border: none
+          &:hover
+            background: #f5f5f5
+            
           &-active
             background: $color-blue
             color: #000
@@ -108,6 +111,8 @@ export default {
               border-top-right-radius: 0
               border-bottom-left-radius: 4px
               border-bottom-right-radius: 4px
+            &:hover
+              background: $color-blue
   
     &-right
       margin: 20px auto

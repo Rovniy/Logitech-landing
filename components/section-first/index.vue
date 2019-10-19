@@ -2,14 +2,14 @@
   <section class="section section-first">
     <div class="shadow" />
     <div class="header">
-      <picture class="header-logo">
+      <picture class="header-logo animated fadeInDown">
         <source srcset="images/misc/logo.svg" media="(min-width: 767px)">
         <img src="images/misc/logo_small.svg" alt="Logitech G432">
       </picture>
     </div>
     <div class="middle">
       <!-- LEFT -->
-      <div class="left">
+      <div class="left animated fadeInLeft delay-1s">
         <h2 class="left_h2">
           g432
         </h2>
@@ -24,11 +24,11 @@
       
       <!-- CENTER -->
       <div class="center">
-        <img src="/images/section-first-bg.png" class="center-img" alt="">
+        <img src="/images/section-first-bg.png" class="center-img animated zoomIn" alt="">
       </div>
       
       <!-- RIGHT -->
-      <div class="right">
+      <div class="right animated fadeInRight delay-1s">
         <div class="right-block">
           <h2 class="right-block-h2">
             ОГРАНИЧЕННОЕ ПРЕДЛОЖЕНИЕ ПО ПРОМОКОДУ
@@ -54,7 +54,7 @@
         </div>
       </div>
     </div>
-    <div class="bottom">
+    <div class="bottom animated fadeInUp delay-2s">
       <span class="bottom__text">На дно-о-о-о-о ! Внизу ждет крутой тест !</span>
     </div>
   </section>
@@ -305,6 +305,7 @@ $shadow-width: 970px
             &__old
               margin: 0 0 0 10px
               height: 20px
+              opacity: .7
             
       &-btn-area
         margin: 20px auto 0
@@ -384,7 +385,7 @@ $shadow-width: 970px
       &:before
         content: ''
         position: absolute
-        bottom: -77px
+        bottom: -55px
         left: calc(50% - 8px)
         width: 16px
         height: 50px

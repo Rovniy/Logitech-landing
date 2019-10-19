@@ -148,10 +148,14 @@ export default {
         border: none
         border-bottom-left-radius: 4px
         border-bottom-right-radius: 4px
-  
+      &:hover
+        background: #f5f5f5
+        
       &-active
         background: $color-blue
         color: #000000
+        &:hover
+          background: $color-blue
   
   &-next
     border-radius: 8px

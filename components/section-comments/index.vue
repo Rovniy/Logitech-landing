@@ -118,17 +118,17 @@ export default {
       videos: [
         {
           id: 1,
-          title: 'LOGITECH G432 7.1. От классики не убе...',
+          title: 'LOGITECH G432 7.1. От классики не убежать!!!!',
           href: 'https://www.youtube.com/embed/wy01grzbBUI'
         },
         {
           id: 2,
-          title: 'Logitech G432 распаковка наушников (П...',
+          title: 'Logitech G432 распаковка наушников (Полный обзор)',
           href: 'https://www.youtube.com/embed/Emf54ncsQKA'
         },
         {
           id: 3,
-          title: 'Logitech g432 интересная игровая гар...',
+          title: 'Logitech g432 интересная игровая гарнитура!',
           href: 'https://www.youtube.com/embed/m6JdJQE0r6s'
         }
       ],
@@ -383,7 +383,7 @@ $desktop-separator-height: 650px
     &-name
       display: block
       position: absolute
-      top: 17px
+      top: 8px
       left: 58px
       color: $color-white
     &-hover

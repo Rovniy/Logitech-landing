@@ -14,6 +14,7 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'author', content: 'Ravy & Seenix' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'theme-color', content: '#000000' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: 'Игровая гарнитура Logitech G432 с поддержкой технологии объемного звучания 7.1' },
       { name: 'twitter:description', content: 'В универсальной игровой гарнитуре G432 с облегченной конструкцией используются диффузоры диаметром 50 мм, технология объемного звучания DTS, 6-миллиметровый микрофон и многое другое.' },
@@ -37,6 +38,7 @@ module.exports = {
   loading: { color: '#fff' },
   css: [
     'vue-plyr/dist/vue-plyr.css',
+    '@/static/library/animate.css',
     { src: resolve(__dirname, 'assets/styles/common.sass'), lang: 'sass' }
   ],
   resolve: {
@@ -71,6 +73,7 @@ module.exports = {
     }
   },
   plugins: [
-    '~/plugins/plyr'
+    '~/plugins/plyr',
+    { src: '~/plugins/waypoint', mode: 'client' }
   ]
 }

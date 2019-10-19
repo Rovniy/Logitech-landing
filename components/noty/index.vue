@@ -66,5 +66,6 @@ export default {
     visibility: hidden
     @include desktop
       display: block
+      visibility: visible
 
 </style>

@@ -1,9 +1,9 @@
 <template>
   <div class="competition-result">
     <span class="competition-result-title">правильных ответов</span>
-    <span class="competition-result-title-res">{{ correctAnswers }} / 15</span>
+    <span class="competition-result-title-res">{{ correctAnswers }} / {{ questionCount }}</span>
     <div class="competition-result-image-area">
-      <img class="competition-result-image-area-img" :src="result.image" alt="">
+      <img id="resultImage" class="competition-result-image-area-img" :src="result.image" alt="">
       <div class="competition-result-image-area-text">
         <span class="competition-result-image-area-text-txt">{{ result.text }}</span>
       </div>
@@ -11,7 +11,7 @@
     <div class="share">
       <script src="/library/share.js" />
       <div class="ya-share2"
-           data-services="vkontakte,facebook,twitter,linkedin"
+           data-services="vkontakte,facebook,twitter"
            :data-title="getFullTitle"
            :data-description="getFullTitle"
            data-hashtags="Logitech, G432, новинки@logitech, LogitechG432"
@@ -45,7 +45,8 @@ export default {
   },
   data() {
     return {
-      result: {}
+      result: {},
+      canvas: null
     }
   },
   computed: {
@@ -53,7 +54,15 @@ export default {
       return location.protocol + '//' + location.host + this.result.image
     },
     getFullTitle() {
-      return `${HASH_TAG} ${this.result.text}`
+      return `${HASH_TAG} ${this.result.sharedText}`
+    },
+    questionCount() {
+      const level = localStorage.getItem('level')
+      if (level && level === 'hightmare') {
+        return 30
+      } else {
+        return 15
+      }
     }
   },
   mounted() {
@@ -170,4 +179,5 @@ export default {
     color: #000
     text-transform: uppercase
     cursor: pointer
+  
 </style>

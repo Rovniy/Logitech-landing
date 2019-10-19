@@ -1,23 +1,26 @@
 <template>
   <section class="section section-four">
-    <div class="section-four-container">
-      <div class="headset-area">
+    <div v-waypoint="{ active: !is_visible, callback: onWaypoint }" class="section-four-container">
+      <div class="headset-area animated" :class="{'fadeIn': is_visible}">
         <img class="headset-area-img" src="/images/section-four-bg-mobile.png" loading="lazy" alt="Logitech 432">
       </div>
       <div class="text-block">
-        <h3 class="text-block-main">
-          6 мм микрофон с функцией отключения при повороте
+        <!-- BLOCK -->
+        <h3 class="text-block-main animated" :class="{'fadeInRight': is_visible}">
+          ЕДИНАЯ ГАРНИТУРА ДЛЯ ВСЕХ ИГРОВЫХ ПЛАТФОРМ
         </h3>
-        <span class="text-block-separator" />
-        <p class="text-block-text">
-          Обеспечивает высокое качество передачи звука
+        <span class="text-block-separator animated delay-1s" :class="{'fadeInRight': is_visible}" />
+        <p class="text-block-text animated" :class="{'fadeInRight': is_visible}">
+          Гарнитура совместима с ПК и PlayStation 4, также ее можно подключить к док-станции Nintendo Switch с помощью кабеля ЦАП USB, поставляемого в комплекте. Кроме того, к консолям и мобильным устройствам ее можно подключить с помощью кабеля с разъемом 3,5 мм.
         </p>
-        <h3 class="text-block-main">
-          Идеальная гарнитура
+  
+        <!-- BLOCK -->
+        <h3 class="text-block-main animated" :class="{'fadeInRight': is_visible}">
+          ПРОЧНАЯ И УДОБНАЯ КОНСТРУКЦИЯ
         </h3>
-        <span class="text-block-separator" />
-        <p class="text-block-text">
-          Для игр в жанре королевской битвы благодаря объемному звучанию 7.1 – легче услышать противника, где бы он ни был
+        <span class="text-block-separator animated delay-1s" :class="{'fadeInRight': is_visible}" />
+        <p class="text-block-text animated" :class="{'fadeInRight': is_visible}">
+          Каждый элемент наушников сконструирован таким образом, чтобы обеспечить тебе максимальный комфорт. Роскошные легкие амбушюры из искусственной кожи и оголовье исключительно комфортны и не давят на уши. Для большего удобства амбушюры можно повернуть под углом до 90°. Независимо от используемой платформы регулировать громкость звука можно с помощью колесика, расположенного на одном из наушников.
         </p>
       </div>
     </div>
@@ -26,14 +29,24 @@
 
 <script>
 export default {
+  data() {
+    return {
+      is_visible: false
+    }
+  },
+  methods: {
+    onWaypoint ({ going }) {
+      if (going === this.$waypointMap.GOING_IN) {
+        this.is_visible = true
+      }
+    }
+  }
 }
 </script>
 
 <style lang="sass" scoped>
 .section-four
   background: linear-gradient(180deg, #1D1D1D 0%, #0B0B0B 100%), #262626
-  @include desktop
-    height: 595px
   
   &-container
     width: 100%
