@@ -57,7 +57,7 @@ export default {
       background: url('/images/section-three-bg-tablet.png') center -12% no-repeat
       padding: 480px 0 0 0
     @include desktop
-      background: url('/images/section-three-bg-desktop.png') 10% 56% no-repeat
+      background: url('/images/section-three-bg-desktop.png') 10% 56% / 39% no-repeat
       max-width: 1920px
       margin: 0 auto
       padding: 0

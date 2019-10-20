@@ -54,10 +54,10 @@ export default {
     padding: 0
     background: #2F3132
     @include tablet
-      background: url('/images/section-four-bg-tablet.png') center -90% no-repeat
+      background: url('/images/section-four-bg-tablet.png') center -65% no-repeat
       padding: 480px 0 0 0
     @include desktop
-      background: url('/images/section-four-bg-desktop.png') 87% 99% no-repeat
+      background: url('/images/section-four-bg-desktop.png') 87% 81% / 41% no-repeat
       max-width: 1920px
       margin: 0 auto
       padding: 0
