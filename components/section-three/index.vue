@@ -86,7 +86,7 @@ export default {
   @include desktop
     width: 50%
     margin: 0 0 0 auto
-    padding: 40px 0 100px 100px
+    padding: 40px 40px 100px 100px
     
   &-main
     font: bold 30px/36px $font-main

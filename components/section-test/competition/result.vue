@@ -58,7 +58,7 @@ export default {
     },
     questionCount() {
       const level = localStorage.getItem('level')
-      if (level && level === 'hightmare') {
+      if (level && level === 'nightmare') {
         return 30
       } else {
         return 15
@@ -83,6 +83,7 @@ export default {
       
       localStorage.removeItem('questions')
       localStorage.removeItem('lastQuestion')
+      localStorage.removeItem('level')
   
       console.log(this.result)
     },
@@ -112,7 +113,7 @@ export default {
   &-image-area
     position: relative
     padding: 0
-    margin: 20px 0 0 0
+    margin: 20px 0 40px 0
     @include desktop
       margin: 40px 0 0 0
   

@@ -55,7 +55,9 @@
       </div>
     </div>
     <div class="bottom animated fadeInUp delay-2s">
-      <span class="bottom__text">На дно-о-о-о-о ! Внизу ждет крутой тест !</span>
+      <span class="bottom__text">
+        ПРОЙДИ СЛОЖНЕЙШИЙ ТЕСТ ВНИЗУ
+      </span>
     </div>
   </section>
 </template>

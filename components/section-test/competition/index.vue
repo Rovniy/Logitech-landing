@@ -32,11 +32,11 @@ export default {
       step: 0,
       level: 0,
       currentAnswer: 0,
-      successAnswers: 0,
       currentQuestions: [],
       ready: false,
       correctAnswers: 0,
-      currentStep: 1
+      currentStep: 1,
+      competition: JSON.parse(JSON.stringify(Competition))
     }
   },
   computed: {
@@ -51,7 +51,15 @@ export default {
     doAgain() {
       localStorage.removeItem('questions')
       localStorage.removeItem('lastQuestion')
+      localStorage.removeItem('level')
       this.step = 0
+      this.level = 0
+      this.currentStep = 1
+      this.currentAnswer = 0
+      this.correctAnswers = 0
+      this.currentQuestions = []
+      this.ready = false
+      this.competition = JSON.parse(JSON.stringify(Competition))
     },
     findLocalData() {
       const questions = localStorage.getItem('questions')
@@ -76,16 +84,16 @@ export default {
       this.step = 1
     },
     createNormalQuestions() {
-      const easyQuestionsCount = Competition.easy.length - 1
-      const normalQuestionsCount = Competition.medium.length - 1
+      const easyQuestionsCount = this.competition.easy.length - 1
+      const normalQuestionsCount = this.competition.medium.length - 1
       
       while (this.currentQuestions.length < NORMAL_EASY_COUNT) {
         const random = this.random(easyQuestionsCount)
         console.log('easy-random-1', random)
-        if (!Competition.easy[random].use) {
-          Competition.easy[random].use = true
+        if (!this.competition.easy[random].use) {
+          this.competition.easy[random].use = true
           
-          const list = Competition.easy[random]
+          const list = this.competition.easy[random]
           list.answers.sort(() => Math.random() - 0.5)
           
           this.currentQuestions.push(list)
@@ -95,10 +103,10 @@ export default {
       while (this.currentQuestions.length < (NORMAL_MEDIUM_COUNT + NORMAL_EASY_COUNT)) {
         const random = this.random(normalQuestionsCount)
         console.log('easy-random-2', random)
-        if (!Competition.medium[random].use) {
-          Competition.medium[random].use = true
+        if (!this.competition.medium[random].use) {
+          this.competition.medium[random].use = true
   
-          const list = Competition.medium[random]
+          const list = this.competition.medium[random]
           list.answers.sort(() => Math.random() - 0.5)
           
           this.currentQuestions.push(list)
@@ -114,16 +122,16 @@ export default {
       console.log('easy', this.currentQuestions)
     },
     createHardQuestions() {
-      const mediumQuestionsCount = Competition.medium.length - 1
-      const hardQuestionsCount = Competition.hard.length - 1
+      const mediumQuestionsCount = this.competition.medium.length - 1
+      const hardQuestionsCount = this.competition.hard.length - 1
   
       while (this.currentQuestions.length < HARD_MEDIUM_COUNT) {
         const random = this.random(mediumQuestionsCount)
         console.log('hard-random-1', random)
-        if (!Competition.medium[random].use) {
-          Competition.medium[random].use = true
+        if (!this.competition.medium[random].use) {
+          this.competition.medium[random].use = true
           
-          const list = Competition.medium[random]
+          const list = this.competition.medium[random]
           list.answers.sort(() => Math.random() - 0.5)
           
           this.currentQuestions.push(list)
@@ -133,10 +141,10 @@ export default {
       while (this.currentQuestions.length < (HARD_MEDIUM_COUNT + HARD_HARD_COUNT)) {
         const random = this.random(hardQuestionsCount)
         console.log('hard-random-2', random)
-        if (!Competition.hard[random].use) {
-          Competition.hard[random].use = true
+        if (!this.competition.hard[random].use) {
+          this.competition.hard[random].use = true
   
-          const list = Competition.medium[random]
+          const list = this.competition.medium[random]
           list.answers.sort(() => Math.random() - 0.5)
           
           this.currentQuestions.push(list)
@@ -152,16 +160,16 @@ export default {
       console.log('hard', this.currentQuestions)
     },
     createNightmareQuestions() {
-      const mediumQuestionsCount = Competition.medium.length - 1
-      const hardQuestionsCount = Competition.hard.length - 1
+      const mediumQuestionsCount = this.competition.medium.length - 1
+      const hardQuestionsCount = this.competition.hard.length - 1
   
       while (this.currentQuestions.length < NIGHTMARE_MEDIUM_COUNT) {
         const random = this.random(mediumQuestionsCount)
         console.log('hard-random-1', random)
-        if (!Competition.medium[random].use) {
-          Competition.medium[random].use = true
+        if (!this.competition.medium[random].use) {
+          this.competition.medium[random].use = true
       
-          const list = Competition.medium[random]
+          const list = this.competition.medium[random]
           list.answers.sort(() => Math.random() - 0.5)
       
           this.currentQuestions.push(list)
@@ -171,10 +179,10 @@ export default {
       while (this.currentQuestions.length < (NIGHTMARE_MEDIUM_COUNT + NIGHTMARE_HARD_COUNT)) {
         const random = this.random(hardQuestionsCount)
         console.log('hard-random-2', random)
-        if (!Competition.hard[random].use) {
-          Competition.hard[random].use = true
+        if (!this.competition.hard[random].use) {
+          this.competition.hard[random].use = true
       
-          const list = Competition.medium[random]
+          const list = this.competition.medium[random]
           list.answers.sort(() => Math.random() - 0.5)
       
           this.currentQuestions.push(list)
