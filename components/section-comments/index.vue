@@ -17,10 +17,10 @@
                 </a>
               </article>
             </slide>
-  
+
             <hooper-pagination slot="hooper-addons" />
           </hooper>
-  
+
           <div v-if="!isMobile">
             <article v-for="item in comments" :key="item.id" class="area-item">
               <span class="area-item-name">{{ item.name }}</span>
@@ -32,9 +32,9 @@
           </div>
         </div>
       </div>
-  
+
       <hr class="section-comments-hr">
-  
+
       <!-- REVIEW -->
       <div class="block block-review">
         <hooper v-if="isMobile" :items-to-show="1" :center-mode="true" :infinite-scroll="true">
@@ -45,10 +45,10 @@
               <a :href="item.link" rel="noopener" target="_blank" class="area-item-read_more">{{ item.readMore }}</a>
             </article>
           </slide>
-    
+
           <hooper-pagination slot="hooper-addons" />
         </hooper>
-    
+
         <div v-if="!isMobile">
           <article v-for="item in reviews" :key="item.id" class="area-item">
             <span class="area-item-source">{{ item.source }}</span>
@@ -57,10 +57,10 @@
           </article>
         </div>
       </div>
-  
+
       <hr class="section-comments-hr">
-  
-  
+
+
       <!-- VIDEO -->
       <div class="block block-video">
         <hooper v-if="isMobile" :items-to-show="1" :center-mode="true" :infinite-scroll="true">
@@ -74,10 +74,10 @@
               </div>
             </article>
           </slide>
-    
+
           <hooper-pagination slot="hooper-addons" />
         </hooper>
-        
+
         <div v-if="!isMobile">
           <article v-for="item in videos" :key="item.id" class="area-item" @click="previewVideo(item.href)">
             <img :src="`/images/video-${item.id}.jpg`" alt="" loading="lazy" class="area-item-bg">
@@ -89,7 +89,7 @@
           </article>
         </div>
       </div>
-      
+
       <div v-if="isVideoShow" class="modal-youtube">
         <div class="modal-youtube-bg" @click="closeVideo" />
         <iframe
@@ -189,7 +189,6 @@ export default {
   },
   methods: {
     previewVideo(href) {
-      console.log(href)
       this.videoUrl = href
       this.isVideoShow = true
     },
@@ -215,7 +214,7 @@ $desktop-separator-height: 650px
     @include desktop
       display: none
       visibility: hidden
-      
+
   &-container
     display: flex
     flex-direction: column
@@ -244,17 +243,17 @@ $desktop-separator-height: 650px
       width: 1px
       height: $desktop-separator-height
       background: url('/images/misc/dot-dark-ver.gif') repeat-y
-  
+
   &-title
     font: bold 18px/18px $font-main
     color: #000
     text-transform: uppercase
     @include desktop
       font: bold 48px/48px $font-main
-    
+
   .area
     margin-top: 70px
-  
+
   .area-item
       margin: 90px auto 0
       position: relative
@@ -275,7 +274,7 @@ $desktop-separator-height: 650px
         height: 32px
         @include tablet
           top: 0
-        
+
       &-name
         font: bold 18px/18px $font-main
         color: #000
@@ -297,14 +296,14 @@ $desktop-separator-height: 650px
           border-color: $color-blue
         &:focus
             outline: none
-  
+
 .block-review
   width: 100%
   @include desktop
     margin-top: 120px
     padding: 0 20px
     order: 3
-  
+
   .area-item
     margin: 0 auto 60px
     display: flex
@@ -316,7 +315,7 @@ $desktop-separator-height: 650px
       height: 188px
     &:last-child
       margin: 0 auto
-      
+
     &-source
       width: 100%
       font: bold 14px/14px $font-main
@@ -339,8 +338,8 @@ $desktop-separator-height: 650px
         border-color: $color-blue
       &:focus
         outline: none
-  
-  
+
+
 .block-video
   width: 100%
   box-sizing: content-box
@@ -372,10 +371,10 @@ $desktop-separator-height: 650px
     &:hover
       .area-item-hover
         display: flex
-    
+
     &-bg
       max-width: 100%
-    
+
     &-icon
       position: absolute
       top: 8px
@@ -404,8 +403,8 @@ $desktop-separator-height: 650px
         border-top: 9px solid transparent
         border-left: 18px solid white
         border-bottom: 9px solid transparent
-    
-  
+
+
 .modal-youtube
   position: fixed
   top: 0
@@ -416,7 +415,7 @@ $desktop-separator-height: 650px
   justify-content: center
   align-items: center
   z-index: 100
-  
+
   &-bg
     position: absolute
     top: 0
@@ -425,7 +424,7 @@ $desktop-separator-height: 650px
     bottom: 0
     background: rgba(0,0,0,.8)
     z-index: 101
-    
+
   &__frame
     border: none
     max-width: 90%
@@ -437,5 +436,5 @@ $desktop-separator-height: 650px
     @include desktop
       width: 1200px
       height: 675px
-    
+
 </style>

@@ -63,146 +63,63 @@ export default {
     },
     findLocalData() {
       const questions = localStorage.getItem('questions')
-      
+
       if (!questions) return
-  
+
       this.currentQuestions = JSON.parse(questions)
       this.step = 1
       this.ready = true
     },
     start(level) {
       localStorage.setItem('level', level)
-      
+
       if (level === 'normal') {
-        this.createNormalQuestions()
+        this.currentQuestions = this.createQuestions('easy', NORMAL_EASY_COUNT, 'medium', NORMAL_MEDIUM_COUNT)
       } else if (level === 'hard') {
-        this.createHardQuestions()
+        this.currentQuestions = this.createQuestions('medium', HARD_MEDIUM_COUNT, 'hard', HARD_HARD_COUNT)
       } else {
-        this.createNightmareQuestions()
+        this.currentQuestions = this.createQuestions('medium', NIGHTMARE_MEDIUM_COUNT, 'hard', NIGHTMARE_HARD_COUNT)
       }
-      
+
       this.step = 1
     },
-    createNormalQuestions() {
-      const easyQuestionsCount = this.competition.easy.length - 1
-      const normalQuestionsCount = this.competition.medium.length - 1
-      
-      while (this.currentQuestions.length < NORMAL_EASY_COUNT) {
-        const random = this.random(easyQuestionsCount)
-        console.log('easy-random-1', random)
-        if (!this.competition.easy[random].use) {
-          this.competition.easy[random].use = true
-          
-          const list = this.competition.easy[random]
-          list.answers.sort(() => Math.random() - 0.5)
-          
-          this.currentQuestions.push(list)
-        }
-      }
-  
-      while (this.currentQuestions.length < (NORMAL_MEDIUM_COUNT + NORMAL_EASY_COUNT)) {
-        const random = this.random(normalQuestionsCount)
-        console.log('easy-random-2', random)
-        if (!this.competition.medium[random].use) {
-          this.competition.medium[random].use = true
-  
-          const list = this.competition.medium[random]
-          list.answers.sort(() => Math.random() - 0.5)
-          
-          this.currentQuestions.push(list)
-        }
-      }
-      
-      this.currentQuestions.sort(() => Math.random() - 0.5)
-      
-      localStorage.setItem('questions', JSON.stringify(this.currentQuestions))
-      
+    createQuestions(level1, count1, level2, count2) {
+      const arrayOne = this.generateQuestions(level1, count1)
+      const arrayTwo = this.generateQuestions(level2, count2)
+      const tempArray = [...arrayOne, ...arrayTwo]
+
+      tempArray.sort(() => Math.random() - 0.5)
+
+      localStorage.setItem('questions', JSON.stringify(tempArray))
+
       this.ready = true
-  
-      console.log('easy', this.currentQuestions)
+
+      return tempArray
     },
-    createHardQuestions() {
-      const mediumQuestionsCount = this.competition.medium.length - 1
-      const hardQuestionsCount = this.competition.hard.length - 1
-  
-      while (this.currentQuestions.length < HARD_MEDIUM_COUNT) {
-        const random = this.random(mediumQuestionsCount)
-        console.log('hard-random-1', random)
-        if (!this.competition.medium[random].use) {
-          this.competition.medium[random].use = true
-          
-          const list = this.competition.medium[random]
+    generateQuestions(level, totalCount) {
+      const question = []
+
+      while (question.length < totalCount) {
+        const count = this.competition[level].length - 1
+        const random = this.random(count)
+
+        if (!this.competition[level][random].use) {
+          this.competition[level][random].use = true
+
+          const list = this.competition[level][random]
           list.answers.sort(() => Math.random() - 0.5)
-          
-          this.currentQuestions.push(list)
+
+          question.push(list)
         }
       }
-  
-      while (this.currentQuestions.length < (HARD_MEDIUM_COUNT + HARD_HARD_COUNT)) {
-        const random = this.random(hardQuestionsCount)
-        console.log('hard-random-2', random)
-        if (!this.competition.hard[random].use) {
-          this.competition.hard[random].use = true
-  
-          const list = this.competition.medium[random]
-          list.answers.sort(() => Math.random() - 0.5)
-          
-          this.currentQuestions.push(list)
-        }
-      }
-  
-      this.currentQuestions.sort(() => Math.random() - 0.5)
-  
-      localStorage.setItem('questions', JSON.stringify(this.currentQuestions))
-  
-      this.ready = true
-  
-      console.log('hard', this.currentQuestions)
-    },
-    createNightmareQuestions() {
-      const mediumQuestionsCount = this.competition.medium.length - 1
-      const hardQuestionsCount = this.competition.hard.length - 1
-  
-      while (this.currentQuestions.length < NIGHTMARE_MEDIUM_COUNT) {
-        const random = this.random(mediumQuestionsCount)
-        console.log('hard-random-1', random)
-        if (!this.competition.medium[random].use) {
-          this.competition.medium[random].use = true
-      
-          const list = this.competition.medium[random]
-          list.answers.sort(() => Math.random() - 0.5)
-      
-          this.currentQuestions.push(list)
-        }
-      }
-  
-      while (this.currentQuestions.length < (NIGHTMARE_MEDIUM_COUNT + NIGHTMARE_HARD_COUNT)) {
-        const random = this.random(hardQuestionsCount)
-        console.log('hard-random-2', random)
-        if (!this.competition.hard[random].use) {
-          this.competition.hard[random].use = true
-      
-          const list = this.competition.medium[random]
-          list.answers.sort(() => Math.random() - 0.5)
-      
-          this.currentQuestions.push(list)
-        }
-      }
-  
-      this.currentQuestions.sort(() => Math.random() - 0.5)
-  
-      localStorage.setItem('questions', JSON.stringify(this.currentQuestions))
-  
-      this.ready = true
-  
-      console.log('nightmare', this.currentQuestions)
+
+      return question
     },
     random(max) {
       let rand = Math.random() * (max + 1)
       return Math.floor(rand)
     },
     goToResults(correctAnswers) {
-      console.log('this.correctAnswers', correctAnswers)
       this.correctAnswers = correctAnswers
       this.step = 2
     },
@@ -229,8 +146,8 @@ export default {
   @include desktop
     margin: 100px 0 0 0
     max-width: 860px
-  
-  
+
+
   &-title
     font: bold 14px/14px $font-main
     color: #C4C4C4

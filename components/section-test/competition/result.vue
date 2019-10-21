@@ -30,7 +30,7 @@
 <script>
 import Results from '~/assets/data/results.json'
 
-const HASH_TAG = '#LogitechG432.'
+const HASH_TAG = '#LogitechG432'
 
 export default {
   props: {
@@ -84,8 +84,6 @@ export default {
       localStorage.removeItem('questions')
       localStorage.removeItem('lastQuestion')
       localStorage.removeItem('level')
-
-      console.log(this.result)
     },
   }
 }
