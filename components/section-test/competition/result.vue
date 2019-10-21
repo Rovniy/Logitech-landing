@@ -54,7 +54,7 @@ export default {
       return location.protocol + '//' + location.host + this.result.image
     },
     getFullTitle() {
-      return `${HASH_TAG} ${this.result.sharedText}`
+      return `${this.correctAnswers} из ${this.questionCount}! Пройди звуковой тест об играх и купи ${HASH_TAG} со скидкой 1000руб.`
     },
     questionCount() {
       const level = localStorage.getItem('level')
@@ -74,17 +74,17 @@ export default {
       const keysArray = Object.keys(Results).map(item => parseInt(item))
       const forCalculate = this.correctAnswers
       const levelCoefficient = localStorage.getItem('level') === 'nightmare' ? forCalculate / 2 : this.correctAnswers
-      
+
       keysArray.forEach(item => {
         if (levelCoefficient >= item) result = Results[item]
       })
-    
+
       this.result = result
-      
+
       localStorage.removeItem('questions')
       localStorage.removeItem('lastQuestion')
       localStorage.removeItem('level')
-  
+
       console.log(this.result)
     },
   }
@@ -93,7 +93,7 @@ export default {
 
 <style lang="sass" scoped>
 .competition-result
-  
+
   &-title
     width: 100%
     text-align: center
@@ -102,26 +102,26 @@ export default {
     font: bold 24px/1 $font-main
     color: #000000
     text-transform: uppercase
-    
+
     &-res
       text-align: center
       display: block
       margin: 20px auto 0
       font: bold 36px/1 $font-main
-      
-  
+
+
   &-image-area
     position: relative
     padding: 0
     margin: 20px 0 40px 0
     @include desktop
       margin: 40px 0 0 0
-  
+
     &-img
       display: block
       width: 100%
       border-radius: 4px
-      
+
     &-text
       padding: 40px
       border-radius: 8px
@@ -139,7 +139,7 @@ export default {
         width: 660px
         top: -40px
         margin: 0 auto
-  
+
       &:before
         position: absolute
         content: ''
@@ -160,25 +160,25 @@ export default {
         background: #fff
         z-index: 1
         height: 20px
-        
+
       &-txt
         color: #000
         font: bold 18px/22px $font-main
-      
-  
+
+
 .share
   text-align: center
-  
+
 .go-again
   display: flex
   justify-content: center
   align-items: center
   margin: 40px auto 0
-  
+
   &-text
     font: 14px/14px $font-main
     color: #000
     text-transform: uppercase
     cursor: pointer
-  
+
 </style>
