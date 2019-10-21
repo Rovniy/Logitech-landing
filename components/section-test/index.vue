@@ -2,7 +2,7 @@
   <section v-waypoint="{ active: !is_visible, callback: onWaypoint }" class="section test">
     <div class="test-container">
       <h3 id="sectionTest" class="test-title animated" :class="{'fadeIn': is_visible}">
-        ПРОЙДИ ТЕСТ И УЗНАЙ НАСКОЛЬКО ХОРОШО ТЫ РАЗБИРАЕШЬСЯ В ИГРАХ
+        ПРОЙДИ ТЕСТ И УЗНАЙ, НАСКОЛЬКО ХОРОШО ТЫ РАЗБИРАЕШЬСЯ В ИГРАХ
       </h3>
       <span class="test-separator animated delay-1s" :class="{'fadeIn': is_visible}" />
       <span class="test-desc animated" :class="{'fadeIn': is_visible}">
@@ -55,7 +55,7 @@ export default {
     @include desktop
       background: url("/images/section-test-bg.png") center 90% / 110% auto no-repeat, radial-gradient(50% 50% at 50% 50%, rgba(188, 213, 221, 0.2) 0%, rgba(87, 87, 87, 0) 100%) center 0 / 50% auto no-repeat
       padding: 190px 0
-  
+
   &-shadow
     background:
     width: 50%
@@ -63,7 +63,7 @@ export default {
     position: absolute
     z-index: 0
     top: 0
-  
+
   &-bg
     width: 100%
     display: none
@@ -76,7 +76,7 @@ export default {
     @include tablet
       display: block
       visibility: visible
-  
+
   &-title
     font: bold 30px/36px $font-main
     color: #ffffff
@@ -89,7 +89,7 @@ export default {
     max-width: 750px
     @include tablet
       font: bold 38px/46px $font-main
-  
+
   &-separator
     display: block
     background: #C3C6C8
@@ -99,7 +99,7 @@ export default {
     margin: 30px auto 0
     @include desktop
       margin: 40px auto 0
-  
+
   &-desc
     position: relative
     z-index: 3
@@ -113,7 +113,7 @@ export default {
     @include tablet
       margin: 40px auto 0
       font: 24px/29px $font-main
-  
+
   &-btn
     background: $color-blue
     font: bold 14px/14px $font-main
@@ -132,8 +132,8 @@ export default {
       background: $color-blue-hover
     &:focus
       outline: none
-    
-  
+
+
 .go-up-area
   display: none
   @include tablet
@@ -151,5 +151,5 @@ export default {
       transition: .2s
   &-btn
     width: 100%
-    
+
 </style>
