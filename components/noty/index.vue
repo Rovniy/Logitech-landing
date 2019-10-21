@@ -1,6 +1,6 @@
 <template>
   <div :class="['noty', {'noty-active': is_show}]">
-    <a class="link" :href="link" target="_blank">
+    <a class="link" :href="link" target="_blank" @click="analytics">
       <span>Промокод скопирован! <span class="invisible">Перейти в</span></span>
       <img src="/images/mvideo.svg" class="img" loading="lazy" alt="М.Видео">
     </a>
@@ -21,10 +21,14 @@ export default {
   methods: {
     showNoty() {
       this.is_show = true
+      this.$ga.event('code', 'click', 'copy')
       
       setTimeout(() => {
         this.is_show = false
       }, 5000)
+    },
+    analytics() {
+      this.$ga.event('link','click','mvideo')
     }
   }
 }

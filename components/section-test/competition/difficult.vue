@@ -46,6 +46,7 @@ export default {
   methods: {
     setLevel(level) {
       this.level = level
+      this.$ga.event('test', 'click', 'start')
     }
   }
 }

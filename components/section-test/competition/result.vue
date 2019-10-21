@@ -19,6 +19,7 @@
            data-lang="ru"
            data-size="m"
            data-url="https://headsets.logitech.promo"
+           @click="analytics"
       />
     </div>
     <div class="go-again">
@@ -67,8 +68,12 @@ export default {
   },
   mounted() {
     this.findResults()
+    this.$ga.event('test', 'event', 'end')
   },
   methods: {
+    analytics() {
+      this.$ga.event('test', 'event', 'share')
+    },
     findResults() {
       let result = 0
       const keysArray = Object.keys(Results).map(item => parseInt(item))
