@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       link: process.env.MVIDEO_LINK,
-      promoCode: 'JHG67E892VDW'
+      promoCode: 'Logi1500'
     }
   },
   methods: {
@@ -46,7 +46,7 @@ export default {
       el.select()
       document.execCommand('copy')
       document.body.removeChild(el)
-  
+
       this.$root.$emit('SHOW_NOTY')
     },
     analytics() {
@@ -78,29 +78,29 @@ export default {
   @include desktop
     max-width: 1100px
     padding: 80px 40px
-  
+
   &__left, &__right
     width: 100%
     @include tablet
       width: 50%
-  
+
   &__right
     align-items: center
     display: flex
-  
+
   &-title
     font: bold 36px/44px $font-main
     text-transform: uppercase
     color: #ffffff
     text-align: left
-  
+
   &-cost
     display: block
     font: bold 36px/36px $font-main
     color: $color-white
     @include desktop
       margin: 20px 0 0 0
-    
+
     &__red
       margin-left: 0
       color: $color-blue
@@ -108,7 +108,7 @@ export default {
         margin: 0 0 0 10px
         height: 20px
         opacity: .7
-  
+
   &-separator
     display: block
     background: #C3C6C8
@@ -118,7 +118,7 @@ export default {
     margin: 20px 0
     @include desktop
       margin: 20px 0 0 0
-      
+
   .right-btn-area
     margin: 20px auto 0
     background: #161616
@@ -129,7 +129,7 @@ export default {
     @include tablet
       width: 294px
       margin: 0 0 0 auto
-    
+
     &-btn
       width: 100%
       height: 50px
@@ -145,7 +145,7 @@ export default {
       text-decoration: none
       &:focus
         outline: none
-      
+
       span
         color: $color-white
         font: bold 14px/14px $font-main
@@ -155,7 +155,7 @@ export default {
         height: 24px
         margin: 0 0 0 15px
         display: block
-    
+
     &-promocode-area
       height: 50%
       width: 100%
@@ -166,7 +166,7 @@ export default {
       padding: 0
       @include tablet
         padding: 0 0 0 40px
-      
+
       &-text
         color: $color-white
         text-transform: uppercase
@@ -175,7 +175,7 @@ export default {
         cursor: pointer
         color: #3F3F3F
         margin: 0 0 0 40px
-        
+
   &-separator
-  
+
 </style>

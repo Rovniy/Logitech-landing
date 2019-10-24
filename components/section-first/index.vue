@@ -21,12 +21,12 @@
           ИГРОВАЯ ГАРНИТУРА С ПОДДЕРЖКОЙ ТЕХНОЛОГИИ ОБЪЕМНОГО ЗВУЧАНИЯ 7.1
         </h1>
       </div>
-      
+
       <!-- CENTER -->
       <div class="center">
         <img src="/images/section-first-bg.png" class="center-img animated zoomIn" alt="">
       </div>
-      
+
       <!-- RIGHT -->
       <div class="right animated fadeInRight delay-1s">
         <div class="right-block">
@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       link: process.env.MVIDEO_LINK,
-      promoCode: 'JHG67E892VDW'
+      promoCode: 'Logi1500'
     }
   },
   methods: {
@@ -78,7 +78,7 @@ export default {
       el.select()
       document.execCommand('copy')
       document.body.removeChild(el)
-  
+
       this.$root.$emit('SHOW_NOTY')
     },
     analytics() {
@@ -105,7 +105,7 @@ $shadow-width: 970px
     justify-content: space-between
     align-items: center
     padding: 0
-  
+
   .shadow
     display: none
     background: #000000
@@ -121,7 +121,7 @@ $shadow-width: 970px
       left: calc(50% - #{$shadow-width / 2})
       width: $shadow-width
       background: radial-gradient(50% 100% at 50% 0%, rgba(188, 213, 221, 0.2) 0%, rgba(87, 87, 87, 0) 100%) -150%
-  
+
   .header
     position: relative
     z-index: 3
@@ -131,19 +131,19 @@ $shadow-width: 970px
       padding: 30px 0 0
     @include desktop
       padding: 3vh 0 0
-    
-    
+
+
     &-logo
       display: block
       text-align: center
-      
+
       img
         height: 45px
         @include tablet
           height: 23px
         @include desktop
           height: 48px
-  
+
   .middle
     position: relative
     z-index: 2
@@ -157,7 +157,7 @@ $shadow-width: 970px
     @include desktop
       margin: 0 auto
       max-width: 1920px
-  
+
     .left
       order: 1
       width: 100%
@@ -166,7 +166,7 @@ $shadow-width: 970px
         width: 50%
         order: 0
         padding: 40px 0 0 0
-  
+
       &_h2
         font: bold 90px/90px $font-semi
         color: $color-blue
@@ -210,7 +210,7 @@ $shadow-width: 970px
           top: auto
           left: auto
           margin: 40px 0 0 52px
-  
+
         &-text
           font: bold 10px/10px $font-main
           color: #000000
@@ -222,7 +222,7 @@ $shadow-width: 970px
           font: bold 18px/18px $font-semi
           color: #000000
           text-transform: uppercase
-  
+
     .center
       order: 0
       width: 100%
@@ -240,14 +240,14 @@ $shadow-width: 970px
         left: 0
         z-index: -1
         text-align: center
-    
+
       &-img
         margin: 0 auto
         width: 100%
         @include desktop
           width: auto
           max-height: 70vh
-  
+
     .right
       order: 2
       width: 100%
@@ -262,7 +262,7 @@ $shadow-width: 970px
         align-items: flex-start
         padding: 0 100px 0 20%
         justify-content: center
-  
+
       &-block
         width: 100%
         @include tablet
@@ -272,7 +272,7 @@ $shadow-width: 970px
           display: flex
           justify-content: flex-start
           flex-direction: column
-          
+
         &-h2
           font: bold 18px/22px $font-main
           color: $color-white
@@ -303,7 +303,7 @@ $shadow-width: 970px
           color: $color-white
           @include desktop
             margin: 20px 0 0 0
-          
+
           &__red
             margin-left: 0
             color: $color-blue
@@ -311,7 +311,7 @@ $shadow-width: 970px
               margin: 0 0 0 10px
               height: 20px
               opacity: .7
-            
+
       &-btn-area
         margin: 20px auto 0
         background: #161616
@@ -323,7 +323,7 @@ $shadow-width: 970px
           margin: 30px auto 0
         @include desktop
           margin: 40px 0 0 0
-  
+
         &-btn
           width: 100%
           height: 50px
@@ -339,18 +339,18 @@ $shadow-width: 970px
           text-decoration: none
           &:focus
             outline: none
-          
+
           span
             color: $color-white
             font: bold 14px/14px $font-main
             display: flex
             text-transform: uppercase
-            
+
           &__mvideo
             height: 24px
             margin: 0 0 0 15px
             display: block
-            
+
         &-promocode-area
           height: 50%
           width: 100%
@@ -359,7 +359,7 @@ $shadow-width: 970px
           align-items: center
           justify-content: center
           padding: 0 0 0 40px
-          
+
           &-text
             color: $color-white
             text-transform: uppercase
@@ -368,7 +368,7 @@ $shadow-width: 970px
             cursor: pointer
             color: #3F3F3F
             margin: 0 0 0 40px
-    
+
   .bottom
     display: none
     @include desktop
@@ -376,7 +376,7 @@ $shadow-width: 970px
       z-index: 2
       display: block
       height: 150px
-      
+
     &__text
       font: bold 24px/1 $font-main
       color: #fff
@@ -386,7 +386,7 @@ $shadow-width: 970px
       background: transparent
       border-radius: 2px
       position: relative
-      
+
       &:before
         content: ''
         position: absolute
@@ -396,8 +396,8 @@ $shadow-width: 970px
         height: 50px
         background: url("/images/section-first-arrow.svg") no-repeat center
         animation: arrow 1s ease-in-out infinite
-  
-  
+
+
 @keyframes arrow
   0%
     transform: translateY(0)
