@@ -214,8 +214,8 @@ $shadow-width: 970px
         &-text
           font: bold 10px/10px $font-main
           color: #000000
-          text-transform: uppercase
           display: block
+          text-transform: uppercase
           margin: 2px 0 0 0
         &-g
           margin: 0 0 0 5px
@@ -362,7 +362,7 @@ $shadow-width: 970px
 
           &-text
             color: $color-white
-            text-transform: uppercase
+            text-transform: none
             font: bold 18px/18px $font-main
           &-icon
             cursor: pointer

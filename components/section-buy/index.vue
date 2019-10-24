@@ -169,7 +169,7 @@ export default {
 
       &-text
         color: $color-white
-        text-transform: uppercase
+        text-transform: none
         font: bold 18px/18px $font-main
       &-icon
         cursor: pointer
