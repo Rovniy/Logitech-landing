@@ -37,7 +37,7 @@
           <span class="right-block-cost">
             =
             <span class="right-block-cost__red">
-              5 490 ₽
+              4 990 ₽
             </span>
             <img class="right-block-cost__red__old" src="images/misc/old_price.svg" alt="old prise">
           </span>

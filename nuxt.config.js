@@ -52,7 +52,6 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     ['@nuxtjs/google-analytics', {
-      dev: true,
       id: 'UA-150594686-1'
     }]
   ],
