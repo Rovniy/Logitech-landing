@@ -46,7 +46,7 @@ export default {
   methods: {
     setLevel(level) {
       this.level = level
-      this.$ga.event('test', 'click', 'start')
+      window.ga('send', 'event', 'test', 'click', 'start')
     }
   }
 }
@@ -56,14 +56,14 @@ export default {
 .difficult-area
   width: 100%
   margin: 0
-  
+
   &-title
     font: bold 14px/14px $font-main
     color: #000000
     text-transform: uppercase
     text-align: center
     display: block
-  
+
   &-select
     display: flex
     flex-direction: column
@@ -76,7 +76,7 @@ export default {
     @include desktop
       margin: 0
       flex-direction: row
-  
+
     &-left
       order: 1
       width: 100%
@@ -86,7 +86,7 @@ export default {
       @include desktop
         order: 1
         min-width: 350px
-  
+
       &-buttons
         border-radius: 4px
         border: 1px solid #EAEAEA
@@ -101,7 +101,7 @@ export default {
             border: none
           &:hover
             background: #f5f5f5
-            
+
           &-active
             background: $color-blue
             color: #000
@@ -114,7 +114,7 @@ export default {
               border-bottom-right-radius: 4px
             &:hover
               background: $color-blue
-  
+
     &-right
       margin: 20px auto
       order: 0
@@ -125,11 +125,11 @@ export default {
       overflow: hidden
       @include desktop
         order: 1
-  
+
       &-img
         width: 200px
         height: 200px
-        
+
   &-next
     background: #000000
     border-radius: 8px

@@ -51,9 +51,6 @@ module.exports = {
     'vue-scrollto/nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
-    ['@nuxtjs/google-analytics', {
-      id: 'UA-150594686-1'
-    }]
   ],
   styleResources: {
     sass: [
@@ -74,6 +71,7 @@ module.exports = {
     }
   },
   plugins: [
+    { src: '~/plugins/ga.js', ssr: false },
     '~/plugins/plyr',
     { src: '~/plugins/waypoint', mode: 'client' }
   ]

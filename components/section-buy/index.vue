@@ -50,7 +50,7 @@ export default {
       this.$root.$emit('SHOW_NOTY')
     },
     analytics() {
-      this.$ga.event('link','click','mvideo_bottom')
+      window.ga('send', 'event', 'link','click','mvideo_bottom')
     }
   }
 }

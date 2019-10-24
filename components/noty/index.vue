@@ -21,14 +21,14 @@ export default {
   methods: {
     showNoty() {
       this.is_show = true
-      this.$ga.event('code', 'click', 'copy')
-      
+      window.ga('send', 'event', 'code', 'click', 'copy')
+
       setTimeout(() => {
         this.is_show = false
       }, 5000)
     },
     analytics() {
-      this.$ga.event('link','click','mvideo')
+      window.ga('send', 'event', 'link','click','mvideo')
     }
   }
 }
@@ -44,10 +44,10 @@ export default {
   transition: .5s ease-in-out
   transform: translateX(500px)
   z-index: 50
-  
+
   &-active
     transform: translateX(0)
-  
+
   .link
     color: #000
     text-decoration: none
@@ -58,7 +58,7 @@ export default {
     align-items: center
     flex-direction: row
     cursor: pointer
-  
+
   .invisible
     display: none
     @include desktop
