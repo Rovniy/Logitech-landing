@@ -3,7 +3,7 @@ const { resolve } = require('path')
 module.exports = {
   mode: 'spa',
   env: {
-    MVIDEO_LINK: 'https://www.mvideo.ru/products/igrovye-naushniki-logitech-g432-981-000770-50126861',
+    MVIDEO_LINK: 'https://www.mvideo.ru/products/igrovye-naushniki-logitech-g432-981-000770-50126861?utm_medium=landing&utm_campaign=logo_naushniki',
   },
   head: {
     htmlAttrs: {
