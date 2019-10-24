@@ -55,7 +55,7 @@ export default {
       return location.protocol + '//' + location.host + this.result.image
     },
     getFullTitle() {
-      return `${this.correctAnswers} из ${this.questionCount}! Пройди звуковой тест об играх и купи ${HASH_TAG} со скидкой 1000руб.`
+      return `${this.correctAnswers} из ${this.questionCount}! Пройди звуковой тест об играх и купи ${HASH_TAG} со скидкой 1500руб.`
     },
     questionCount() {
       const level = localStorage.getItem('level')
