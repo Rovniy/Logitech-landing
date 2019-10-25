@@ -42,7 +42,7 @@
             <img class="right-block-cost__red__old" src="images/misc/old_price.svg" alt="old prise">
           </span>
         </div>
-        <div class="right-btn-area">
+        <div class="right-btn-area" @mouseenter="popup = true" @mouseleave="popup = false">
           <a :href="link" rel="noopener" class="right-btn-area-btn" target="_blank" @click="analytics">
             <span>Купить в</span>
             <img src="/images/mvideo.svg" class="right-btn-area-btn__mvideo" loading="lazy" alt="М.Видео">
@@ -51,6 +51,7 @@
             <span class="right-btn-area-promocode-area-text">{{ promoCode }}</span>
             <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon" alt="" @click="copy">
           </div>
+          <span v-if="popup" class="right-btn-area-alarm animated fadeIn">Промокод нужно ввести на последнем шаге оформления заказа</span>
         </div>
       </div>
     </div>
@@ -67,7 +68,8 @@ export default {
   data() {
     return {
       link: process.env.MVIDEO_LINK,
-      promoCode: 'Logi1500'
+      promoCode: 'Logi1500',
+      popup: false
     }
   },
   methods: {
@@ -83,6 +85,7 @@ export default {
     },
     analytics() {
       window.ga('send', 'event', 'link','click','mvideo')
+      window.fbq('track', 'InitiateCheckout')
     }
   }
 }
@@ -323,6 +326,13 @@ $shadow-width: 970px
           margin: 30px auto 0
         @include desktop
           margin: 40px 0 0 0
+
+        &-alarm
+          margin: 10px 0 0 0
+          display: block
+          color: #fff
+          font: 14px/16px $font-main
+          padding: 5px
 
         &-btn
           width: 100%

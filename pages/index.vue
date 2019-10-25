@@ -8,6 +8,15 @@
     <SectionTest />
     <Footer />
     <Noty />
+    <noscript>
+      <img src="https://vk.com/rtrg?p=VK-RTRG-419229-aPnuU" style="position:fixed; left:-999px" alt="" />
+    </noscript>
+    <noscript>
+      <img src="https://top-fwz1.mail.ru/counter?id=3145704;js=na" style="border:0;position:absolute;left:-9999px;" alt="Top.Mail.Ru" />
+    </noscript>
+    <noscript>
+      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=421168088797161&ev=PageView&noscript=1" alt="" />
+    </noscript>
   </main>
 </template>
 

@@ -34,6 +34,11 @@ module.exports = {
         type: 'image/x-icon',
         href: 'images/favicon.ico'
       }
+    ],
+    script: [
+      {
+        src: 'https://www.googletagmanager.com/gtag/js?id=AW-699434004'
+      }
     ]
   },
   loading: { color: '#fff' },
@@ -72,6 +77,10 @@ module.exports = {
   },
   plugins: [
     { src: '~/plugins/ga.js', ssr: false },
+    { src: '~/plugins/facebook.js', ssr: false },
+    { src: '~/plugins/vkontakte.js', ssr: false },
+    { src: '~/plugins/mailru.js', ssr: false },
+    { src: '~/plugins/yandex.js', ssr: false },
     '~/plugins/plyr',
     { src: '~/plugins/waypoint', mode: 'client' }
   ]
