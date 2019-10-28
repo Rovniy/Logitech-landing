@@ -51,7 +51,7 @@
             <span class="right-btn-area-promocode-area-text">{{ promoCode }}</span>
             <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon" alt="" @click="copy">
           </div>
-          <span v-if="popup" class="right-btn-area-alarm animated fadeIn">Промокод нужно ввести на последнем шаге оформления заказа</span>
+          <span :class="['right-btn-area-alarm animated fadeIn', {'visible': popup}]">Промокод нужно ввести на последнем шаге оформления заказа</span>
         </div>
       </div>
     </div>
@@ -333,6 +333,17 @@ $shadow-width: 970px
           color: #fff
           font: 14px/16px $font-main
           padding: 5px
+          border-radius: 4px
+          border: 1px solid $color-blue
+          text-align: center
+          @include desktop
+            display: none
+            visibility: hidden
+            text-align: left
+
+          &.visible
+            display: block
+            visibility: visible
 
         &-btn
           width: 100%

@@ -24,7 +24,7 @@
             <span class="right-btn-area-promocode-area-text">{{ promoCode }}</span>
             <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon" alt="" @click="copy">
           </div>
-          <span v-if="popup" class="right-btn-area-alarm animated fadeIn">Промокод нужно ввести на последнем шаге оформления заказа на сайте М.Видео</span>
+          <span :class="['right-btn-area-alarm animated fadeIn', {'visible': popup}]">Промокод нужно ввести на последнем шаге оформления заказа</span>
         </div>
       </div>
     </div>
@@ -71,11 +71,12 @@ export default {
   max-width: 294px
   display: flex
   flex-direction: column
-  padding: 40px
+  padding: 40px 40px 100px
   margin: 0 auto
   box-sizing: content-box
   @include tablet
     width: 100%
+    padding: 40px
     max-width: 768px
     flex-direction: row
   @include desktop
@@ -139,6 +140,17 @@ export default {
       color: #fff
       font: 14px/16px $font-main
       padding: 5px
+      border-radius: 4px
+      border: 1px solid $color-blue
+      text-align: center
+      @include desktop
+        display: none
+        visibility: hidden
+        text-align: left
+
+      &.visible
+        display: block
+        visibility: visible
 
     &-btn
       width: 100%

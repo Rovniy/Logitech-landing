@@ -17,6 +17,9 @@
     <noscript>
       <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=421168088797161&ev=PageView&noscript=1" alt="" />
     </noscript>
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MR8ZG9J" height="0" width="0" style="display:none;visibility:hidden" />
+    </noscript>
   </main>
 </template>
 
