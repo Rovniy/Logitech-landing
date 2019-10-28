@@ -51,7 +51,7 @@
             <span class="right-btn-area-promocode-area-text">{{ promoCode }}</span>
             <img src="images/section-first-copy.svg" class="right-btn-area-promocode-area-icon" alt="" @click="copy">
           </div>
-          <span :class="['right-btn-area-alarm animated fadeIn', {'visible': popup}]">Промокод нужно ввести на последнем шаге оформления заказа</span>
+          <span :class="['right-btn-area-alarm animated fadeIn', {'visible': popup}]">Промокод нужно ввести на последнем шаге оформления заказа на сайте М.Видео</span>
         </div>
       </div>
     </div>
@@ -203,7 +203,7 @@ $shadow-width: 970px
         padding: 4px 7px
         transform: rotateZ(-90deg)
         top: 150px
-        left: -25px
+        left: -19px
         max-width: 70px
         @include tablet
           top: 190px
@@ -339,7 +339,6 @@ $shadow-width: 970px
           @include desktop
             display: none
             visibility: hidden
-            text-align: left
 
           &.visible
             display: block

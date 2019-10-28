@@ -9,27 +9,27 @@ html
 *, *:before, *:after
   box-sizing: border-box
   margin: 0
-  
+
 h1, h2, h3, h4, h5
   color: $color-light-bg
 
 .container
   display: flex
   flex-direction: column
-  
+
 .section
   display: flex
   width: 100%
-  
+
 /*************** HOOPER **********/
 .hooper
   height: auto!important
-  
+
 .hooper-pagination
   &:focus
     outline: none!important
     border: none!important
-    
+
 .hooper-pagination
   bottom: -50px!important
   .hooper-indicators
@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5
         &.is-active
           background: $color-blue!important
 
-          
+
 /************* AUDION PLAYER ***********/
 .plyr
   &__menu
@@ -58,9 +58,22 @@ h1, h2, h3, h4, h5
       margin-right: 0!important
   &__progress
     &__container
-      
+
       max-width: 50%!important
       @include tablet
         max-width: none!important
-  
-    
+
+
+
+.ya-share2__icon
+  width: 50px!important
+  height: 50px!important
+  @include desktop
+    width: 40px!important
+    height: 40px!important
+
+.ya-share2__item
+  margin: 5px 15px 5px 0!important
+  @include desktop
+    margin: 5px 8px 5px 0!important
+
