@@ -21,15 +21,12 @@ export default {
   methods: {
     showNoty() {
       this.is_show = true
-      window.ga('send', 'event', 'code', 'click', 'copy')
 
       setTimeout(() => {
         this.is_show = false
       }, 5000)
     },
-    analytics() {
-      window.ga('send', 'event', 'link','click','mvideo')
-    }
+    analytics() {}
   }
 }
 </script>

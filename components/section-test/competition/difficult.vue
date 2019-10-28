@@ -46,7 +46,6 @@ export default {
   methods: {
     setLevel(level) {
       this.level = level
-      window.ga('send', 'event', 'test', 'click', 'start')
     }
   }
 }
