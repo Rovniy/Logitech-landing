@@ -37,7 +37,7 @@ module.exports = {
     ],
     script: [
       {
-        src: 'https://www.googletagmanager.com/gtag/js?id=AW-699434004'
+        src: 'https://www.googletagmanager.com/gtag/js?id=GTM-MR8ZG9J'
       }
     ]
   },

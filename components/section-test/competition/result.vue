@@ -68,9 +68,12 @@ export default {
   },
   mounted() {
     this.findResults()
+    window.ga('send', 'event', 'test', 'event', 'end')
   },
   methods: {
-    analytics() {},
+    analytics() {
+      window.ga('send', 'event', 'test', 'event', 'share')
+    },
     findResults() {
       let result = 0
       const keysArray = Object.keys(Results).map(item => parseInt(item))

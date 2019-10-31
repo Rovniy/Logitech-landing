@@ -191,6 +191,7 @@ export default {
     previewVideo(href) {
       this.videoUrl = href
       this.isVideoShow = true
+      window.ga('send', 'event', 'video', 'click', 'show')
     },
     closeVideo() {
       this.isVideoShow = false
