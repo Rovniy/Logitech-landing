@@ -6,4 +6,5 @@ export default () => {
   gtag('js', new Date());
 
   gtag('config', 'GTM-MR8ZG9J');
+  window.ga('create', 'UA-150594686-1')
 }
