@@ -52,8 +52,8 @@ export default {
       this.$root.$emit('SHOW_NOTY')
     },
     analytics() {
-      window.ga('send', 'event', 'link','click','mvideo_bottom')
-      window.fbq('track', 'InitiateCheckout')
+      window.ga ? window.ga('send', 'event', 'link','click','mvideo_bottom') : null
+      window.fbq ? window.fbq('track', 'InitiateCheckout') : null
     }
   }
 }

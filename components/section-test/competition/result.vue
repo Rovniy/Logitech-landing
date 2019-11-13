@@ -68,11 +68,11 @@ export default {
   },
   mounted() {
     this.findResults()
-    window.ga('send', 'event', 'test', 'event', 'end')
+    window.ga ? window.ga('send', 'event', 'test', 'event', 'end'): null
   },
   methods: {
     analytics() {
-      window.ga('send', 'event', 'test', 'event', 'share')
+      window.ga ? window.ga('send', 'event', 'test', 'event', 'share'): null
     },
     findResults() {
       let result = 0

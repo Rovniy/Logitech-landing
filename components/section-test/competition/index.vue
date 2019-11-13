@@ -60,7 +60,7 @@ export default {
       this.currentQuestions = []
       this.ready = false
       this.competition = JSON.parse(JSON.stringify(Competition))
-      window.ga('send', 'event', 'test', 'click', 'repeat')
+      window.ga ? window.ga('send', 'event', 'test', 'click', 'repeat'): null
     },
     findLocalData() {
       const questions = localStorage.getItem('questions')
